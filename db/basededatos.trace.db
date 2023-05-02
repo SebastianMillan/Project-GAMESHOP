@@ -1,0 +1,567 @@
+2023-04-19 17:20:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FK_LINEAVENTA_PRODUCTO" ya existe
+Constraint "FK_LINEAVENTA_PRODUCTO" already exists; SQL statement:
+alter table linea_reserva add constraint fk_lineaventa_producto foreign key (producto_cod_producto) references producto [90045-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:109)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:442)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:389)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:169)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-19 17:20:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FK_LINEAVENTA_VENTA" ya existe
+Constraint "FK_LINEAVENTA_VENTA" already exists; SQL statement:
+alter table linea_reserva add constraint fk_lineaventa_venta foreign key (venta_cod_venta) references venta [90045-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:109)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:442)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:389)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:169)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-19 17:20:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FK_LINEAVENTA_PRODUCTO" ya existe
+Constraint "FK_LINEAVENTA_PRODUCTO" already exists; SQL statement:
+alter table linea_venta add constraint fk_lineaventa_producto foreign key (producto_cod_producto) references producto [90045-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:109)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:442)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:389)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:169)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-19 17:20:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FK_LINEAVENTA_VENTA" ya existe
+Constraint "FK_LINEAVENTA_VENTA" already exists; SQL statement:
+alter table linea_venta add constraint fk_lineaventa_venta foreign key (venta_cod_venta) references venta [90045-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:632)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:109)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:72)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:442)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:389)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:169)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0, ),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0, ),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0, ), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5, true, 'Deportes', '3'), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9), [42001-214]
+2023-04-24 17:51:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9) [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0, ),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0, ),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0, ), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9), [42001-214]
+2023-04-24 17:53:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9) [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO producto (nombre, descripcion, empresa, fecha_lanzamiento, precio_base, imagen, calificacion) VALUES [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '2013-09-17', 59.99, '', 9.0), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('FIFA 22', 'Videojuego de fútbol', 'Electronic Arts', '2021-10-01', 59.99, '', 8.5), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Call of Duty: Modern Warfare', 'Juego de disparos en primera persona', 'Activision', '2019-10-25', 59.99, '', 8.8), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('The Witcher 3: Wild Hunt', 'Juego de rol de acción', 'CD Projekt RED', '2015-05-19', 39.99, '', 9.9), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('The Legend of Zelda: Breath of the Wild', 'Juego de aventuras', 'Nintendo', '2017-03-03', 59.99, '', 9.8), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Red Dead Redemption 2', 'Juego de acción y aventuras en mundo abierto', 'Rockstar Games', '2018-10-26', 59.99, '', 9.5), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9),"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9), [42001-214]
+2023-04-24 17:53:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Assassin''s Creed Valhalla', 'Juego de acción y aventuras en mundo abierto', 'Ubisoft', '2020-11-10', 59.99, '', 8.9) [42001-214]
+2023-04-24 17:56:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO producto (nombre, descripcion, empresa, imagen, fecha_lanzamiento, precio_base, calificacion) VALUES[*]"; se esperaba "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"
+Syntax error in SQL statement "INSERT INTO producto (nombre, descripcion, empresa, imagen, fecha_lanzamiento, precio_base, calificacion) VALUES[*]"; expected "ROW (, (, DEFAULT, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+INSERT INTO producto (nombre, descripcion, empresa, imagen, fecha_lanzamiento, precio_base, calificacion) VALUES [42001-214]
+2023-04-24 17:56:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0) [42001-214]
+2023-04-24 17:57:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "ID" no encontrada
+Column "ID" not found; SQL statement:
+INSERT INTO producto (id, nombre, descripcion, empresa, imagen, fecha_lanzamiento, precio_base, calificacion) VALUES [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:749)
+	at org.h2.command.Parser.parseColumn(Parser.java:1256)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1241)
+	at org.h2.command.Parser.parseInsert(Parser.java:1641)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:514)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:183)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-24 17:57:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0) [42001-214]
+2023-04-24 17:57:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "CODPRODUCTO" no encontrada
+Column "CODPRODUCTO" not found; SQL statement:
+INSERT INTO producto (codProducto, nombre, descripcion, empresa, imagen, fecha_lanzamiento, precio_base, calificacion) VALUES [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:749)
+	at org.h2.command.Parser.parseColumn(Parser.java:1256)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1241)
+	at org.h2.command.Parser.parseInsert(Parser.java:1641)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:514)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:183)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-24 17:57:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0) [42001-214]
+2023-04-27 13:18:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Columna "CODPRODUCTO" no encontrada
+Column "CODPRODUCTO" not found; SQL statement:
+INSERT INTO producto (codProducto, nombre, descripcion, empresa, imagen, fecha_lanzamiento, precio_base, calificacion) VALUES [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:749)
+	at org.h2.command.Parser.parseColumn(Parser.java:1256)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1241)
+	at org.h2.command.Parser.parseInsert(Parser.java:1641)
+	at org.h2.command.Parser.parsePrepared(Parser.java:814)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:458)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:514)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:183)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:138)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:124)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:168)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:85)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:335)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:910)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at com.salesianostriana.dam.videogamesshopproject_sebastianmillan.VideogamesShopProjectSebastianMillanApplication.main(VideogamesShopProjectSebastianMillanApplication.java:10)
+2023-04-27 13:18:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "([*]1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; se esperaba "(, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "([*]1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(1, 'Grand Theft Auto V', 'Juego de acción en mundo abierto', 'Rockstar Games', '', '2013-09-17', 59.99, 9.0) [42001-214]

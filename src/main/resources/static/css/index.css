@@ -1,0 +1,15 @@
+body{
+    background-image: linear-gradient(90deg, rgb(65, 131, 255), rgb(160, 100, 238));
+}
+#cabecera .logo a span{
+    font-family: 'Comfortaa', cursive;
+}
+#cabecera .logo-img{
+    width: 14%;
+}
+a{
+    text-decoration: none !important;
+}
+.lista-producto, .detalle-videojuego, .form-videojuego{
+    background-color: rgba(255, 255, 255, 0.682);
+}
