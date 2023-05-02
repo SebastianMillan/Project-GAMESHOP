@@ -13,8 +13,10 @@ public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 
+	
+	
 	@GetMapping("/productos")
-	private String lista(Model model) {
+	public String lista(Model model) {
 		model.addAttribute("listaProductos", productoService.findAll());
 		return "index";	
 	}
