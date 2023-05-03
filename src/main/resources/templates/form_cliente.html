@@ -16,7 +16,7 @@
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="dni">DNI</label>
-                            <input type="text" th:field="*{nombre}" id="dni" class="form-control" />
+                            <input type="text" th:field="*{dni}" id="dni" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -24,40 +24,35 @@
                     <div class="col-xl-4">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="nombre">Nombre</label>
-                            <input type="text" id="nombre" class="form-control" />
+                            <input type="text" id="nombre" th:field="*{nombre}" class="form-control" />
                         </div>
                     </div>
                     <div class="col-xl-8">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="apellidos">Apellidos</label>
-                            <input type="text" id="apellidos" class="form-control" />
+                            <input type="text" id="apellidos" th:field="*{apellidos}" class="form-control" />
                         </div>
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="contra" class="form-label fs-5">Contraseña</label>
-                        <input type="password" id="contra" class="form-control">
+                        <input type="password" id="contra" th:field="*{contrasenya}" class="form-control">
                     </div>
                     <div class="col-xl-6">
                         <label for="repite-contra" class="form-label fs-5">Repite Contraseña</label>
-                        <input type="password" id="repite-contra" class="form-control">
+                        <input type="password" id="repite-contra" th:field="*{contrasenya}" class="form-control">
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="fecha-nac" class="form-label fs-5">Fecha Nacimiento</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
+                        <input type="date" id="fecha-nac" name="fecha-nac" th:field="*{fechaNacim}" th:value="*{fechaNacim}" />
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="telefono">Teléfono</label>
-                            <input type="text" id="telefono" class="form-control" />
+                            <input type="text" id="telefono" th:field="*{telefono}" class="form-control" />
                         </div>
                     </div>
                 </div>
