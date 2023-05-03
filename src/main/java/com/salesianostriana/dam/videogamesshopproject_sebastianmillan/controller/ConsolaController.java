@@ -5,15 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
+public class ConsolaController {
 
-	@GetMapping("/login")
-	public String showLoginForm(Model model) {
-		return "form_inicio_sesion";
-	}
-	
-	@GetMapping("/login/submit")
-	public String processLoginForm(Model model) {
-		return "index";
+	@GetMapping("/formConsola")
+	public String showFormConsola(Model model) {
+		//model.addAttribute("listaProductos", productoService.findAll());
+		return "form_consola";	
 	}
 }

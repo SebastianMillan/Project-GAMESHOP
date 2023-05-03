@@ -5,15 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
+public class VideojuegoController {
 
-	@GetMapping("/login")
-	public String showLoginForm(Model model) {
-		return "form_inicio_sesion";
-	}
-	
-	@GetMapping("/login/submit")
-	public String processLoginForm(Model model) {
-		return "index";
+	@GetMapping("/formVideojuego")
+	public String showFormVideojuego(Model model) {
+
+		//Videojuego videojuego = new Videojuego();
+		return "form_videojuego";	
 	}
 }

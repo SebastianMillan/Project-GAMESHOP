@@ -5,18 +5,18 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="form-videojuego w-50 p-3 mx-auto mt-4">
-            <form name="form-cliente" action="" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <form name="form-cliente" th:action="addCliente" th:object="${clienteForm}" method="POST" autocomplete="on" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label for="email-cliente" class="form-label fs-5">Email</label>
-                            <input type="email" class="form-control" id="email-cliente">
+                            <input type="email" th:field="*{email}" class="form-control" id="email-cliente">
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="dni">DNI</label>
-                            <input type="text" id="dni" class="form-control" />
+                            <input type="text" th:field="*{nombre}" id="dni" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block my-2">Añadir Cliente</button>
+                <button type="submit" value="Submit" class="btn btn-primary btn-block my-2">Añadir Cliente</button>
             </form>
         </div>
     </main>
