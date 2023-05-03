@@ -10,6 +10,6 @@ body{
 a{
     text-decoration: none !important;
 }
-.lista-producto, .detalle-videojuego, .form-videojuego{
+.lista-producto, .detalle-videojuego, .form-videojuego, .contenedor-estadistica{
     background-color: rgba(255, 255, 255, 0.682);
 }
