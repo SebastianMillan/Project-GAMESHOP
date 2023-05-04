@@ -13,11 +13,15 @@ public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 
-	
-	
 	@GetMapping("/productos")
 	public String lista(Model model) {
-		model.addAttribute("listaProductos", productoService.findAll());
+		//model.addAttribute("listaProductos", productoService.findAll());
 		return "index";	
 	}
+	
+	@GetMapping("/addVideojuego")
+	public String showAdminVideojuego(Model model) {
+		return "admin_videojuego";
+	}
+	
 }
