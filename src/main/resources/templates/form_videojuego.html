@@ -5,24 +5,24 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="form-videojuego w-50 p-3 mx-auto">
-            <form name="filtro-productos" action="" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <form name="filtro-productos" th:action="addVideojuego" th:object="${videojuegoForm}" method="POST" autocomplete="on" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="titulo">Título</label>
-                            <input type="text" id="titutlo" class="form-control" />
+                            <input type="text" th:field="*{nombre}" id="titulo" class="form-control" />
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="empresa">Empresa Desarrolladora</label>
-                            <input type="text" id="empresa" class="form-control" />
+                            <input type="text" th:field="*{empresa}" id="empresa" class="form-control" />
                         </div>
                     </div>
                 </div>
                 <div class="form-outline my-2">
                     <label class="form-label fs-5" for="descripcion">Descripción</label>
-                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                    <textarea class="form-control" th:field="*{descripcion}" id="descripcion" rows="3"></textarea>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-4">
@@ -36,12 +36,10 @@
                             <option value="rpg">RPG</option>
                             <option value="accion">Acción</option>
                             <option value="puzzle">Puzzle</option>
-                            <option value="musical">Musical</option>
                             <option value="estrategia">Estrategia</option>
                             <option value="simulacion">Simulación</option>
                             <option value="deportes">Deportes</option>
                             <option value="carreras">Carreras</option>
-
                         </select>
                     </div>
                     <div class="col-xl-4">
@@ -74,7 +72,7 @@
                         <div class="form-outline">
                             <label class="form-label fs-5" for="precio">Precio</label>
                             <i class="bi bi-currency-euro trailing fs-5"></i>
-                            <input type="number" id="precio" class="form-control form-icon-trailing" />
+                            <input type="number" th:field="*{precioBase}" id="precio" class="form-control form-icon-trailing" />
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -87,7 +85,7 @@
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="tipo-desarrollo" class="form-label fs-5">Tipo Desarrollo</label>
-                        <select class="form-select" aria-label="tipo-desarrollo">
+                        <select class="form-select" th:field="*{pegi}" aria-label="tipo-desarrollo">
                             <option value="aaa">AAA</option>
                             <option value="aa">AA</option>
                             <option value="indie">Indie</option>
