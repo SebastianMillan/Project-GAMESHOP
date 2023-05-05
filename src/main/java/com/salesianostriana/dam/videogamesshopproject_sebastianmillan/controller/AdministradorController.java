@@ -7,11 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-public class ConsolaController {
+public class AdministradorController {
 
-	@GetMapping("/formConsola")
-	public String showFormConsola(Model model) {
-		//model.addAttribute("consola", new Consola());
-		return "form_consola";	
+	@GetMapping("/")
+	public String showVistaAdmin(Model model) {
+		return "admin/vista_admin";
 	}
 }
