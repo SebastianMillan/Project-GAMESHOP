@@ -2,36 +2,39 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@MappedSuperclass
+@Data
+@AllArgsConstructor
+//@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Producto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long codProducto;
+	@GeneratedValue
+	protected Long id;
 
-	private String nombre, descripcion, empresa, imagen;
-	private LocalDate fechaLanzamiento;
-	private double precioBase, calificacion;
+	protected String nombre, descripcion, empresa, imagen;
 	
-	public Producto(Long codProducto, String nombre, String descripcion, String empresa, String imagen,
-			LocalDate fechaLanzamiento, double precioBase, double calificacion) {
-		this.codProducto = codProducto;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.empresa = empresa;
-		this.imagen = imagen;
-		this.fechaLanzamiento = fechaLanzamiento;
-		this.precioBase = precioBase;
-		this.calificacion = calificacion;
-	}
+	@Column(name="fecha_lanzamiento")
+	protected LocalDate fechaLanzamiento;
+	
+	@Column(name="precio_base")
+	protected double precioBase;
+	
+	protected double calificacion;
 	
 	
 }

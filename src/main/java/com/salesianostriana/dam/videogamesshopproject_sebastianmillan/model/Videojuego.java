@@ -1,41 +1,34 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model;
 
-import java.time.LocalDate;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter @Setter @NoArgsConstructor
-//@EqualsAndHashCode(callSuper = true)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 //@ToString(callSuper = true)
 @Entity
+@Table(name = "videojuego")
 public class Videojuego extends Producto{
 	
 	private VideojuegoGenero genero;
 	private VideojuegoPEGI pegi;
+	
+	@Column(name = "es_edic_coleccionista")
 	private boolean esEdicColeccionista;
+	
+	@Column(name = "tipo_desarrollo")
 	private VideojuegoTipoDesarrollo tipoDesarrollo;
+	
+	@Column(name = "es_para_reservar")
 	private boolean esParaReservar;
 	//private Consola plataforma;
-	
-	public Videojuego(Long codProducto, String nombre, String descripcion, String empresa, String imagen,
-			LocalDate fechaLanzamiento, double precioBase, double calificacion, VideojuegoGenero genero,
-			VideojuegoPEGI pegi, boolean esEdicColeccionista, VideojuegoTipoDesarrollo tipoDesarrollo,
-			boolean esParaReservar) {
-		super(codProducto, nombre, descripcion, empresa, imagen, fechaLanzamiento, precioBase, calificacion);
-		this.genero = genero;
-		this.pegi = pegi;
-		this.esEdicColeccionista = esEdicColeccionista;
-		this.tipoDesarrollo = tipoDesarrollo;
-		this.esParaReservar = esParaReservar;
-	}
-	
-	
-	
 	
 }

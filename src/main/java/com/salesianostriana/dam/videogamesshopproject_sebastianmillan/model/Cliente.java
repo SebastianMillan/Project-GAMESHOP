@@ -12,7 +12,9 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
@@ -28,6 +30,8 @@ public class Cliente {
 	private LocalDate fechaNacim;
 	private int puntos;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER)
 	@Builder.Default
 	private List<Venta> ventas = new ArrayList<>();

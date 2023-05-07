@@ -15,7 +15,7 @@ public class ProductoController {
 
 	@GetMapping("/")
 	public String indice(Model model) {
-		//model.addAttribute("listaProductos", productoService.findAll());
+		model.addAttribute("listaProductos", productoService.findAll());
 		return "index";	
 	}
 
