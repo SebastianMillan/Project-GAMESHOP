@@ -1,14 +1,20 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +35,8 @@ public class Venta {
 	private Long id;
 	
 	private double importeTotal;
+	
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime fecha;
 	
 	@ToString.Exclude
@@ -37,13 +45,20 @@ public class Venta {
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_venta_cliente"))
 	private Usuario usuario;
 	
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	@OneToMany(mappedBy = "venta", fetch = FetchType.EAGER)
+	@Builder.Default
+	private List<LineaVenta> lineasVenta = new ArrayList<>();
+	
 	//Métodos helper para las asociaciones con cliente
-	public void addToCliente(Usuario cliente) {
-		this.usuario = cliente;
-		cliente.getVentas().add(this);
+	public void addToUsuario(Usuario usuario) {
+		this.usuario = usuario;
+		usuario.getVentas().add(this);
 	}
-	public void removeFromCurso(Usuario cliente) {
+	public void removeFromUsuario(Usuario usuario) {
 		this.usuario=null;
-		cliente.getVentas().remove(this);
+		usuario.getVentas().remove(this);
 	}
+	
 }

@@ -10,6 +10,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 //@MappedSuperclass
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producto {
 
 	@Id
@@ -29,6 +31,7 @@ public abstract class Producto {
 	protected String nombre, descripcion, empresa, imagen;
 	
 	@Column(name="fecha_lanzamiento")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	protected LocalDate fechaLanzamiento;
 	
 	@Column(name="precio_base")

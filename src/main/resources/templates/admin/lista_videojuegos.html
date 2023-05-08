@@ -17,23 +17,19 @@
             <div class="lista-producto">
                 <table class="table table-borderless">
                     <thead class="text-center">
-                        <th>ID</th>
                         <th>Nombre</th>
-                        <th>Descripcion</th>
+                        <th>Empresa</th>
                         <th>Fecha Lanzamiento</th>
                         <th>Precio</th>
-                        <th>Activo</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
                     <tbody class="align-middle text-center">
-                        <tr th>
-                            <th>1</th>
-                            <td>Playstation 5</td>
-                            <td>La última consola de Sony con gráficos impresionantes y un gran catálogo de juegos</td>
-                            <td>2020-11-10</td>
-                            <td>499.99€</td>
-                            <td>SI</td>
+                        <tr th:each="videojuego : ${videojuegos}">
+                            <td th:text="${videojuego.nombre}">Playstation 5</td>
+                            <td th:text=${videojuego.empresa}>Nintendo</td>
+                            <td th:text="${#temporals.format(videojuego.fechaLanzamiento, 'dd/MMM/yyyy')}">2020-11-10</td>
+                            <td th:text="${#numbers.formatCurrency(videojuego.precioBase)}">499.99€</td>
                             <td><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></td>
                             <td><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></td>
                         </tr>

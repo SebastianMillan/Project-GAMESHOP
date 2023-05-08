@@ -34,4 +34,16 @@ public class LineaVenta {
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_lineaventa_venta"))
 	private Venta venta;
+	
+	//Métodos helper para las asociaciones con lineas de venta
+	
+	public void addToVenta(Venta venta) {
+		this.venta=venta;
+		venta.getLineasVenta().add(this);
+	}
+	public void removeFromVenta(Venta venta) {
+		this.venta=null;
+		venta.getLineasVenta().remove(this);
+	}
+
 }
