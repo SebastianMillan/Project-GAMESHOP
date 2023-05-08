@@ -24,6 +24,6 @@ public class UsuarioController {
 	
 	@GetMapping("/me")
 	public String me(@AuthenticationPrincipal Usuario u) {
-		return "";
+		return "perfil";
 	}
 }

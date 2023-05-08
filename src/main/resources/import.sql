@@ -1,6 +1,11 @@
-INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('123A','Sebastián','Millán Ordóñez','user', 'millan.orseb23@triana.salesianos.edu','1234','123123123','2000-07-26',true);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('32132132Z','Sebastián','Millán Ordóñez','admin','millan.orseb23@triana.salesianos.edu','{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa','123123123','2000-07-26',true);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('12345678A', 'Juan', 'Pérez García', 'user', 'juanpg@email.com', '{bcrypt}$2a$10$bnFKD2JlOON0nuv94.KPqumWUSa9LORejpDtcumz/Vlg/diEjajzi', '555123456', '1990-01-01', false);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('87654321B', 'María', 'López Pérez', 'marialp', 'marialp@email.com', '{bcrypt}$2a$10$bnFKD2JlOON0nuv94.KPqumWUSa9LORejpDtcumz/Vlg/diEjajzi', '666987654', '1985-05-15', false);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('11111111A', 'Pedro', 'González Torres', 'pedrog', 'pedrog@email.com', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '777333444', '1988-10-31', true);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('22222222B', 'Ana', 'Sánchez Rodríguez', 'anasr', 'anasr@email.com', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '666111222', '1995-07-22', true);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('33333333C', 'Luis', 'García Fernández', 'luisgf', 'luisgf@email.com', '{bcrypt}$2a$10$bnFKD2JlOON0nuv94.KPqumWUSa9LORejpDtcumz/Vlg/diEjajzi', '555777888', '1992-12-18', false);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('44444444D', 'Carmen', 'Martínez García', 'carmeng', 'carmeng@email.com', '{bcrypt}$2a$10$bnFKD2JlOON0nuv94.KPqumWUSa9LORejpDtcumz/Vlg/diEjajzi', '555888999', '1998-03-09', false);
+INSERT INTO USUARIO (DNI, NOMBRE, APELLIDOS, USERNAME, EMAIL, PASSWORD, TELEFONO, FECHA_NACIM, ADMIN) VALUES ('66666666F', 'Marta', 'González Pérez', 'martagp', 'martagp@email.com', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '777666555', '1991-09-28', true);
 
---insert into videojuego (id, calificacion, descripcion, empresa, fecha_lanzamiento, imagen, nombre, precio_base, es_edic_coleccionista, es_para_reservar, genero, pegi, tipo_desarrollo) 
---values (1, 4.5, 'Un clásico de los videojuegos de plataformas.', 'Nintendo', '1985-09-13', 'mario.jpg', 'Super Mario Bros.', 49.99, false, true, 1, 3, 2);
 
 ALTER SEQUENCE hibernate_sequence RESTART WITH 1000;
