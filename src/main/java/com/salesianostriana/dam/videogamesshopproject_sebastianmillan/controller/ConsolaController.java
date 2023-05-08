@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin")
 public class ConsolaController {
 
-	@GetMapping("/formConsola")
+	@GetMapping("/admin/formConsola")
 	public String showFormConsola(Model model) {
 		//model.addAttribute("consola", new Consola());
 		return "form_consola";	

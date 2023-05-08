@@ -35,15 +35,15 @@ public class Venta {
 	@EqualsAndHashCode.Exclude
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_venta_cliente"))
-	private Cliente cliente;
+	private Usuario usuario;
 	
 	//Métodos helper para las asociaciones con cliente
-	public void addToCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void addToCliente(Usuario cliente) {
+		this.usuario = cliente;
 		cliente.getVentas().add(this);
 	}
-	public void removeFromCurso(Cliente cliente) {
-		this.cliente=null;
+	public void removeFromCurso(Usuario cliente) {
+		this.usuario=null;
 		cliente.getVentas().remove(this);
 	}
 }
