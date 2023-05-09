@@ -7,11 +7,12 @@ body{
 #cabecera .logo-img{
     width: 70px;
 }
-.producto{
+.producto, .caratula{
     height: 350px;
 }
 a{
     text-decoration: none !important;
+    color: black;
 }
 .lista-producto, .detalle-videojuego, .form-videojuego{
     background-color: rgba(255, 255, 255, 0.682);

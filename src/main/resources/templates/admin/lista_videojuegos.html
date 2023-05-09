@@ -29,7 +29,7 @@
                         <tr th:each="videojuego : ${videojuegos}">
                             <td th:text="${videojuego.nombre}">Playstation 5</td>
                             <td th:text=${videojuego.empresa}>Nintendo</td>
-                            <td th:text="${#temporals.format(videojuego.fechaLanzamiento, 'dd/MMM/yyyy')}">2020-11-10</td>
+                            <td th:text="${#temporals.format(videojuego.fechaLanzamiento)}">2020-11-10</td>
                             <td th:text="${#numbers.formatCurrency(videojuego.precioBase)}">499.99€</td>
                             <td><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></td>
                             <td><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></td>

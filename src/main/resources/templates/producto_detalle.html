@@ -4,33 +4,34 @@
 <body>
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
-        <div class="detalle-videojuego w-50 mx-auto row mt-5 rounded-3">
+        <div class="detalle-videojuego w-50 mx-auto row mt-2 mb-5 rounded-3">
             <div class="col-xl-9 p-3">
-                <span class="display-4 fw-bold">Título del Videojuego</span>
+                <span class="display-4 fw-bold" th:text="${producto.nombre}">Título del Videojuego</span>
             </div>
             <div class="col-xl-3 p-2">
-                <span class="fs-1 fw-bold align-middle">59.99€</span>
+                <span class="fs-1 fw-bold align-middle" th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">59.99€</span>
                 <button type="button" class="btn btn-light rounded-circle"><i class="bi bi-cart-plus-fill fs-3"></i></button>
             </div>
             <div class="col-xl-5 mb-3">
-                <img src="https://media.vandal.net/m/24761/grand-theft-auto-v-2014111710572_1.jpg" alt="caratula videojuego" class="w-100 p-2">
+                <img src="http://placehold.it/350x260" alt="caratula videojuego" 
+                th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}" class="w-100 p-2">
             </div>
             <div class="col-xl-7 p-4">
                 <span class="fw-bold">PLATAFORMA</span><br>
-                <span class="ps-4">Playstation 4</span><br>
+                <span class="ps-4" th:text="${producto.plataforma}">Playstation 4</span><br>
                 <span class="fw-bold">DESCRIPCIÓN</span><br>
                 <div class="ps-4">
-                    <span >
+                    <span th:text="${producto.descripcion}">
                         Juego de acción y aventura desarrollado por Rockstar North y publicado por Rockstar Games en 2013. El juego se
                         desarrolla en una versión ficticia de Los Ángeles y sus alrededores, conocida como Los Santos.
                     </span><br>
                 </div>
                 <span class="fw-bold">VALORACIÓN</span><br>
-                <span class="ps-4">9.0/10</span><br>
+                <span class="ps-4" th:text="${#numbers.formatDecimal(producto.calificacion,1,1)}">9.0</span>/10<br>
                 <span class="fw-bold">PEGI</span><br>
                 <span class="ps-4">+18</span><br>
                 <span class="fw-bold">FECHA DE LANZAMIENTO</span><br>
-                <span class="ps-4">2013-09-17</span><br>
+                <!--<span class="ps-4" th:text="${#temporals.format(videojuego.fechaLanzamiento, 'dd-MM-yyyy')}">2013-09-17</span>--><br>
             </div>
         </div>
 
