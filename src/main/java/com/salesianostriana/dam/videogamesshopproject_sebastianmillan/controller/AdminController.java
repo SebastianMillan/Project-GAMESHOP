@@ -24,11 +24,6 @@ public class AdminController {
 	private ProductoService productoService;
 	
 	@GetMapping("/")
-	public String index() {
-		return "vista_admin";
-	}
-	
-	@GetMapping("/videojuegos")
 	public String mostrarListaVideojuegos(Model model) {
 		model.addAttribute("videojuegos", productoService.findAllVideojuegos());
 		return "lista_videojuegos";

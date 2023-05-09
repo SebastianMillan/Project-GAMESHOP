@@ -6,9 +6,10 @@
     <header th:fragment="header_basico">
         <div id="cabecera" class="bg-dark py-1 justify-content-center m-0">
             <div class="text-center logo p-1">
-                <a href="/indice">
-                    <img src="../../static/img/icono_web-min.png" th:src="@{../../static/img/icono_web-min.png}" alt="logo" class="logo-img">
+                <a href="#">
+                    <img src="../../static/img/icono_web-min.png" th:src="@{/img/icono_web-min.png}" alt="logo" class="logo-img">
                     <span class="fs-1 align-middle ps-4 text-white">GAMESHOP</span>
+                    <span th:text="${#authentication.getPrincipal().getAuthorities().stream().findFirst().get().getAuthority()}" />
                 </a>
             </div>
         </div>

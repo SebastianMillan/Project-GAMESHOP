@@ -3,6 +3,7 @@
 <head th:replace="~{fragmentos/head::head}"></head>
 <body>
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
+    <form th:action="@{/logout}" method="POST" id="logoutForm"></form>
     <div class="row m-0">
         <aside class="col-xl-2 bg-white">
             <ul>
