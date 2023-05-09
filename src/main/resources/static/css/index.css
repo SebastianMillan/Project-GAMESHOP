@@ -5,7 +5,10 @@ body{
     font-family: 'Comfortaa', cursive;
 }
 #cabecera .logo-img{
-    width: 14%;
+    width: 70px;
+}
+.producto{
+    height: 350px;
 }
 a{
     text-decoration: none !important;

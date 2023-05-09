@@ -22,7 +22,7 @@ public class UsuarioController {
 	}
 	*/
 	
-	@GetMapping("/me")
+	@GetMapping("/profile")
 	public String me(@AuthenticationPrincipal Usuario u) {
 		return "perfil";
 	}

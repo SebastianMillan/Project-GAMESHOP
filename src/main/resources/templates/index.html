@@ -67,12 +67,14 @@
                 <div class="producto col-xl-4 my-3" th:each="producto : ${listaProductos}" >
                     <div class="row h-100">
                         <div class="col-xl-7 p-0">
-                            <img th:src="@{producto.imagen}" alt="caratula" class="w-100 mx-auto d-block">
+                            <img th:src="${producto.imagen}" alt="caratula" class="h-100 mx-auto d-block">
                         </div>
                         <div class="col-xl-5">
                             <span th:text="${producto.nombre}" class="fs-5 text-break fw-bold">Videojuego</span><br>
                             <span th:text="${producto.empresa}">Playstation 4</span>
                             <span th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}" class="align-bottom d-block">59,99€</span>
+                            <a href=""></a>
+                            <a href=""></a>
                         </div>
                     </div>
                 </div>
