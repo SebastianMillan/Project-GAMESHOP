@@ -25,14 +25,8 @@ public class AdminController {
 	
 	@GetMapping("/")
 	public String mostrarListaVideojuegos(Model model) {
-		model.addAttribute("videojuegos", productoService.findAllVideojuegos());
+		model.addAttribute("videojuegos", productoService.findAll());
 		return "lista_videojuegos";
-	}
-	
-	@GetMapping("/consolas")
-	public String mostrarListaConsolas(Model model) {
-		model.addAttribute("consolas", productoService.findAllConsolas());
-		return "lista_consolas";
 	}
 	
 	@GetMapping("/clientes")

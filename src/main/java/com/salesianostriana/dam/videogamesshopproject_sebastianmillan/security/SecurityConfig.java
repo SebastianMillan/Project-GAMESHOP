@@ -71,8 +71,7 @@ public class SecurityConfig {
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
-			.loginPage("/")
-			.loginProcessingUrl("/login")
+			.loginPage("/login")
 			.permitAll();
 		
 		// Añadimos esto para poder seguir accediendo a la consola de H2

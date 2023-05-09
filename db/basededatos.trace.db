@@ -2516,3 +2516,47 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Admin/D
 	at org.h2.mvstore.FileStore.open(FileStore.java:128)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:452)
 	... 55 more
+2023-05-09 13:32:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "VIDEOJUEGO" no encontrada
+Table "VIDEOJUEGO" not found; SQL statement:
+INSERT INTO VIDEOJUEGO(ID, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO) VALUES (1, false, false, 4, 5, 1) [42102-214]
+2023-05-09 13:32:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "VIDEOJUEGO" no encontrada
+Table "VIDEOJUEGO" not found; SQL statement:
+INSERT INTO VIDEOJUEGO(ID, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO) VALUES (2, false, false, 10, 1, 1) [42102-214]
+2023-05-09 13:32:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "VIDEOJUEGO" no encontrada
+Table "VIDEOJUEGO" not found; SQL statement:
+INSERT INTO VIDEOJUEGO(ID, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO) VALUES (3, false, false, 4, 3, 1) [42102-214]
+2023-05-09 13:32:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CONSOLA" no encontrada
+Table "CONSOLA" not found; SQL statement:
+INSERT INTO CONSOLA(ID, COLOR) VALUES (20, 'Gris') [42102-214]
+2023-05-09 13:32:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CONSOLA" no encontrada
+Table "CONSOLA" not found; SQL statement:
+INSERT INTO CONSOLA(ID, COLOR) VALUES (21, 'Blanco y negro') [42102-214]
+2023-05-09 13:32:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CONSOLA" no encontrada
+Table "CONSOLA" not found; SQL statement:
+INSERT INTO CONSOLA(ID, COLOR) VALUES (22, 'Negro') [42102-214]
+2023-05-09 13:42:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]Hibernate: create table producto (id bigint not null, calificacion double not null, descripcion varchar(255), empresa varchar(255), es_edic_coleccionista boolean not null, es_para_reservar boolean not null, fecha_lanzamiento date, genero integer, imagen varchar(255), nombre varchar(255), pegi integer, plataforma varchar(255), precio_base double not null, tipo_desarrollo integer, primary key (id))"; se esperaba "HELP"
+Syntax error in SQL statement "[*]Hibernate: create table producto (id bigint not null, calificacion double not null, descripcion varchar(255), empresa varchar(255), es_edic_coleccionista boolean not null, es_para_reservar boolean not null, fecha_lanzamiento date, genero integer, imagen varchar(255), nombre varchar(255), pegi integer, plataforma varchar(255), precio_base double not null, tipo_desarrollo integer, primary key (id))"; expected "HELP"; SQL statement:
+Hibernate: create table producto (id bigint not null, calificacion double not null, descripcion varchar(255), empresa varchar(255), es_edic_coleccionista boolean not null, es_para_reservar boolean not null, fecha_lanzamiento date, genero integer, imagen varchar(255), nombre varchar(255), pegi integer, plataforma varchar(255), precio_base double not null, tipo_desarrollo integer, primary key (id)) [42001-214]
+2023-05-09 13:53:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA) [42001-214]
+2023-05-09 13:53:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA)[*]"; se esperaba "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"
+Syntax error in SQL statement "INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA)[*]"; expected "OVERRIDING USER VALUE, OVERRIDING SYSTEM VALUE, DIRECT, SORTED, DEFAULT VALUES, VALUES, SET, WITH, (, SELECT, TABLE, VALUES"; SQL statement:
+INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA) [42001-214]
+2023-05-09 13:54:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "U&'ACCI\\00d3N' (PRODUCTO: ""GENERO"" INTEGER)"
+Data conversion error converting "U&'ACCI\\00d3N' (PRODUCTO: ""GENERO"" INTEGER)"; SQL statement:
+INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA) VALUES (1, 9.0, 'Videojuego de acción-aventura en mundo abierto', 'Ubisoft', '2020-11-10', 'assassins-creed-valhalla.jpg', 'Assassin''s Creed Valhalla', 59.99, false, false, 'ACCIÓN', 'DIECIOCHO', 'AAA', 'Playstation 4') [22018-214]
+2023-05-09 13:57:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'ACCION' (PRODUCTO: ""GENERO"" INTEGER)"
+Data conversion error converting "'ACCION' (PRODUCTO: ""GENERO"" INTEGER)"; SQL statement:
+INSERT INTO PRODUCTO(ID, CALIFICACION, DESCRIPCION, EMPRESA, FECHA_LANZAMIENTO, IMAGEN, NOMBRE, PRECIO_BASE, ES_EDIC_COLECCIONISTA, ES_PARA_RESERVAR, GENERO, PEGI, TIPO_DESARROLLO, PLATAFORMA) VALUES (1, 9.0, 'Videojuego de acción-aventura en mundo abierto', 'Ubisoft', '2020-11-10', 'assassins-creed-valhalla.jpg', 'Assassin''s Creed Valhalla', 59.99, false, false, 'ACCION', 'DIECIOCHO', 'AAA', 'Playstation 4') [22018-214]

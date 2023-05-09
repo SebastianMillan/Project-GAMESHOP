@@ -2,13 +2,11 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,25 +17,39 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-//@MappedSuperclass
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Producto {
+public class Producto {
 
 	@Id
 	@GeneratedValue
-	protected Long id;
+	private Long id;
 
-	protected String nombre, descripcion, empresa, imagen;
+	private String nombre, descripcion, empresa, imagen, plataforma;
 	
-	@Column(name="fecha_lanzamiento")
+	//@Column(name="fecha_lanzamiento")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	protected LocalDate fechaLanzamiento;
+	private LocalDate fechaLanzamiento;
 	
-	@Column(name="precio_base")
-	protected double precioBase;
+	//@Column(name="precio_base")
+	private double precioBase;
 	
-	protected double calificacion;
+	private double calificacion;
+    
+	@Enumerated(EnumType.STRING)
+	private VideojuegoGenero genero;
+	
+	@Enumerated(EnumType.STRING)
+	private VideojuegoPEGI pegi;
+	
+	//@Column(name = "es_edic_coleccionista")
+	private boolean esEdicColeccionista;
+	
+	//@Column(name = "tipo_desarrollo")
+	@Enumerated(EnumType.STRING)
+	private VideojuegoTipoDesarrollo tipoDesarrollo;
+	
+	//@Column(name = "es_para_reservar")
+	private boolean esParaReservar;
 	
 	
 }
