@@ -5,7 +5,7 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="form-videojuego w-50 p-3 mx-auto">
-            <form name="filtro-productos" th:action="addVideojuego" th:object="${videojuegoForm}" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <form name="filtro-productos" th:action="${producto.id == 0} ? @{/editVideojuego/submit} : @{/addVideojuego/submit}" th:object="${producto}" method="POST" autocomplete="on" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-outline">
@@ -27,45 +27,28 @@
                 <div class="row my-2">
                     <div class="col-xl-4">
                         <label for="genero" class="form-label fs-5">Género</label>
-                        <select class="form-select" aria-label="genero">
-                            <option value="arcade">Arcade</option>
-                            <option value="plataformas">Plataformas</option>
-                            <option value="disparos">Disparos</option>
-                            <option value="peleas">Peleas</option>
-                            <option value="aventura">Aventura</option>
-                            <option value="rpg">RPG</option>
-                            <option value="accion">Acción</option>
-                            <option value="puzzle">Puzzle</option>
-                            <option value="estrategia">Estrategia</option>
-                            <option value="simulacion">Simulación</option>
-                            <option value="deportes">Deportes</option>
-                            <option value="carreras">Carreras</option>
+                        <select class="form-select" name="genero" aria-label="genero">
+                            <option
+                                th:each="genero : ${generos}"
+                                th:value="${genero}" th:text="${genero}">AAA</option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="pegi" class="form-label fs-5">PEGI</label>
-                        <select class="form-select" aria-label="pegi">
-                            <option value="3">+3</option>
-                            <option value="7">+7</option>
-                            <option value="12">+12</option>
-                            <option value="16">+16</option>
-                            <option value="18">+18</option>
-
+                        <select class="form-select" name="pegi" aria-label="tipo-desarrollo">
+                            <option
+                                th:each="pegi : ${pegis}"
+                                th:value="${pegi}" th:text="${pegi}">AAA</option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="fecha-lanz" class="form-label fs-5">Fecha Lanzamiento</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
+                        <input type="date" class="form-control">
                     </div>
                 </div>
                 <div class="my-2">
-                    <label for="caratula-videojuego" class="form-label fs-5">Carátura Videojuego</label>
-                    <input class="form-control" type="file" id="caratula-videojuego">
+                    <label for="caratula-videojuego" class="form-label fs-5">URL Carátura Videojuego</label>
+                    <input class="form-control" type="text" th:field="*{imagen}" id="caratula-videojuego">
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
@@ -85,10 +68,8 @@
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="tipo-desarrollo" class="form-label fs-5">Tipo Desarrollo</label>
-                        <select class="form-select" th:field="*{pegi}" aria-label="tipo-desarrollo">
-                            <option value="aaa">AAA</option>
-                            <option value="aa">AA</option>
-                            <option value="indie">Indie</option>
+                        <select class="form-select" name="tipo-desarrollo" aria-label="tipo-desarrollo">
+                            <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}">AAA</option>
                         </select>
                     </div>
                     <div class="col-xl-6">
@@ -101,10 +82,6 @@
                             <option value="switch">Nintendo Switch</option>                 
                         </select>
                     </div>
-                </div>
-                <div class="my-2">
-                    <label for="calificacion" class="form-label fs-5">Calificación Videojuego 0-10</label>
-                    <input type="range" class="form-range" min="0" max="10" step="0.5" id="calificacion">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block my-4">Añadir Videojuego</button>
             </form>
