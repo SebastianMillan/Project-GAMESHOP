@@ -5,7 +5,8 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="form-videojuego w-50 p-3 mx-auto">
-            <form name="filtro-productos" th:action="${producto.id == 0} ? @{/editVideojuego/submit} : @{/addVideojuego/submit}" th:object="${producto}" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <form name="filtro-productos" th:action="${producto.id != 0} ? @{/editVideojuego/submit} : @{/addVideojuego/submit}" th:object="${producto}" method="POST" autocomplete="on" enctype="multipart/form-data">
+                <input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-outline">

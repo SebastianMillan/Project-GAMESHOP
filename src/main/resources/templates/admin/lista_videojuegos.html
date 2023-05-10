@@ -30,8 +30,8 @@
                             <td th:text=${producto.empresa}>Nintendo</td>
                             <td th:text="${#temporals.format(producto.fechaLanzamiento)}">2020-11-10</td>
                             <td th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">499.99€</td>
-                            <td><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></td>
-                            <td><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></td>
+                            <td><a th:href="@{/editVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></a></td>
+                            <td><a th:href="@{/deleteVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
                         </tr>
                     </tbody>
                 </table>
