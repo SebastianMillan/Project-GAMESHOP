@@ -26,19 +26,20 @@ public class AdminController {
 	@GetMapping("/")
 	public String mostrarListaVideojuegos(Model model) {
 		model.addAttribute("videojuegos", productoService.findAll());
-		return "lista_videojuegos";
+		return "/admin/lista_videojuegos";
 	}
 	
 	@GetMapping("/clientes")
 	public String mostrarListaClientes(Model model) {
 		model.addAttribute("usuarios", usuarioService.findAll());
-		return "lista_usuarios";
+		return "/admin/lista_usuarios";
 	}
 	
 	@GetMapping("/ventas")
 	public String mostrarListaVentas(Model model) {
 		model.addAttribute("ventas", ventaService.findAll());
-		return "lista_ventas";
+		//model.addAttribute("importe", ventaService.cargarPrecio());)
+		return "/admin/lista_ventas";
 	}
 	
 }
