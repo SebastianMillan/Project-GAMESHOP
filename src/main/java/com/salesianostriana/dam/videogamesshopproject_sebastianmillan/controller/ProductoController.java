@@ -4,34 +4,58 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.ProductoService;
+
 
 @Controller
 public class ProductoController {
 	
 	@Autowired
 	private ProductoService productoService;
+	
+	@GetMapping("/addVideojuego")
+	public String showFormAddVideojuego(Model model) {
+		model.addAttribute("producto", new Producto());
+		model.addAttribute("pegis", productoService.obtenerValoresPegi());
+		model.addAttribute("generos", productoService.obtenerValoresGenero());
+		model.addAttribute("tipos", productoService.obtenerValoresTipoDesarrollo());
 
-	@GetMapping("/indice")
-	public String indice(Model model) {
-		//model.addAttribute("listaProductos", productoService.findAll());
-		return "index";	
+		return "form_videojuego";	
 	}
-	@GetMapping("/formCliente")
-	public String lista(Model model) {
-		//model.addAttribute("listaProductos", productoService.findAll());
-		return "index";	
+	
+	@PostMapping("/addVideojuego/submit")
+	public String processFormAddVideojuego(@ModelAttribute("producto") Producto p) {
+		productoService.save(p);
+		return "redirect:/admin/";
+	}
+	
+	@GetMapping("/editVideojuego/{id}")
+	public String showFormEditVideojuego(@PathVariable("id") long id, Model model) {
+		Producto pEditar = productoService.findById(id).get();
+		if(pEditar!=null) {
+			model.addAttribute("producto", pEditar);
+			return "form_videojuego";
+		} else {
+			return "redirect:/admin/";
+		}
+		
+	}
+	@PostMapping("/editVideojuego/submit")
+	public String processFormEditVideojuego(@ModelAttribute("producto") Producto p) {
+		productoService.save(p);
+		return "redirect:/admin/";
+	}
+	
+	@GetMapping("/deleteVideojuego/{id}")
+	public String deleteVideojuego(@PathVariable("id") long id) {
+		productoService.deleteById(id);
+		return "redirect:/admin/";
 	}
 
-	@GetMapping("/productoDetalle")
-	public String detalle(Model model) {
-		//model.addAttribute("listaProductos", productoService.findAll());
-		return "producto_detalle";	
-	}
-	@GetMapping("/consolaAdmin")
-	public String admin(Model model) {
-		//model.addAttribute("listaProductos", productoService.findAll());
-		return "admin_consola";	
-	}
+
 }

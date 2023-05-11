@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/head::head}"></head>
+<body>
+    <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
+    <!--<form th:action="@{/logout}" method="POST" id="logoutForm"></form>-->
+    <div class="row m-0">
+        <aside class="col-xl-2 bg-white">
+            <ul>
+                <li><a th:href="@{/admin/}">Videojuegos</a></li>
+                <li><a th:href="@{/admin/clientes}">Clientes</a></li>
+                <li><a th:href="@{/admin/ventas}">Ventas</a></li>
+            </ul>
+        </aside>
+        <main class="col-xl-10">
+            <a th:href="@{/addVideojuego}"><button type="button" class="btn btn-light d-flex ms-auto m-2">Añadir Videojuego</button></a>
+            <div class="lista-producto">
+                <table class="table table-borderless">
+                    <thead class="text-center">
+                        <th>Nombre</th>
+                        <th>Empresa</th>
+                        <th>Fecha Lanzamiento</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody class="align-middle text-center">
+                        <tr th:each="producto : ${videojuegos}">
+                            <td th:text="${producto.nombre}">Playstation 5</td>
+                            <td th:text=${producto.empresa}>Nintendo</td>
+                            <td th:text="${#temporals.format(producto.fechaLanzamiento)}">2020-11-10</td>
+                            <td th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">499.99€</td>
+                            <td><a th:href="@{/editVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></a></td>
+                            <td><a th:href="@{/deleteVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <footer th:replace="~{fragmentos/footer::footer}"></footer>
+</body>
+</html>

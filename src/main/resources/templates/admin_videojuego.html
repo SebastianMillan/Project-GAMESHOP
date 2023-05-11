@@ -31,7 +31,128 @@
             </ul>
         </aside>
         <main class="col-xl-10">
-            <button type="button" class="btn btn-light d-flex ms-auto m-2">Añadir Consola</button>
+            <button type="button" data-toggle="modalAddVideojuego" data-target="#modalVideojuego" class="btn btn-light d-flex ms-auto m-2">Añadir Consola</button>
+            <!--Modal del boton de añadir videojuego-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form name="filtro-productos" th:action="addVideojuego" th:object="${videojuegoForm}" method="POST" autocomplete="on" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="form-outline">
+                                        <label class="form-label fs-5" for="titulo">Título</label>
+                                        <input type="text" th:field="*{nombre}" id="titulo" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-outline">
+                                        <label class="form-label fs-5" for="empresa">Empresa Desarrolladora</label>
+                                        <input type="text" th:field="*{empresa}" id="empresa" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline my-2">
+                                <label class="form-label fs-5" for="descripcion">Descripción</label>
+                                <textarea class="form-control" th:field="*{descripcion}" id="descripcion" rows="3"></textarea>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-xl-4">
+                                    <label for="genero" class="form-label fs-5">Género</label>
+                                    <select class="form-select" aria-label="genero">
+                                        <option value="arcade">Arcade</option>
+                                        <option value="plataformas">Plataformas</option>
+                                        <option value="disparos">Disparos</option>
+                                        <option value="peleas">Peleas</option>
+                                        <option value="aventura">Aventura</option>
+                                        <option value="rpg">RPG</option>
+                                        <option value="accion">Acción</option>
+                                        <option value="puzzle">Puzzle</option>
+                                        <option value="estrategia">Estrategia</option>
+                                        <option value="simulacion">Simulación</option>
+                                        <option value="deportes">Deportes</option>
+                                        <option value="carreras">Carreras</option>
+                                    </select>
+                                </div>
+                                <div class="col-xl-4">
+                                    <label for="pegi" class="form-label fs-5">PEGI</label>
+                                    <select class="form-select" aria-label="pegi">
+                                        <option value="3">+3</option>
+                                        <option value="7">+7</option>
+                                        <option value="12">+12</option>
+                                        <option value="16">+16</option>
+                                        <option value="18">+18</option>
+            
+                                    </select>
+                                </div>
+                                <div class="col-xl-4">
+                                    <label for="fecha-lanz" class="form-label fs-5">Fecha Lanzamiento</label>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control">
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-2">
+                                <label for="caratula-videojuego" class="form-label fs-5">Carátura Videojuego</label>
+                                <input class="form-control" type="file" id="caratula-videojuego">
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-xl-6">
+                                    <div class="form-outline">
+                                        <label class="form-label fs-5" for="precio">Precio</label>
+                                        <i class="bi bi-currency-euro trailing fs-5"></i>
+                                        <input type="number" th:field="*{precioBase}" id="precio" class="form-control form-icon-trailing" />
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="form-check">
+                                        <label class="form-check-label fs-5" for="edic-colec">Edición Coleccionista</label>
+                                        <input class="form-check-input" type="checkbox" value="" id="edic-colec">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-xl-6">
+                                    <label for="tipo-desarrollo" class="form-label fs-5">Tipo Desarrollo</label>
+                                    <select class="form-select" th:field="*{pegi}" aria-label="tipo-desarrollo">
+                                        <option value="aaa">AAA</option>
+                                        <option value="aa">AA</option>
+                                        <option value="indie">Indie</option>
+                                    </select>
+                                </div>
+                                <div class="col-xl-6">
+                                    <label for="plataforma" class="form-label fs-5">Plataforma</label>
+                                    <select class="form-select" aria-label="plataforma">
+                                        <option value="playstation-5">Playstation 5</option>
+                                        <option value="playstation-4">Playstation 4</option>
+                                        <option value="xbox-series">XBOX Series</option>
+                                        <option value="xbox-one">XBOX One</option>
+                                        <option value="switch">Nintendo Switch</option>                 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="my-2">
+                                <label for="calificacion" class="form-label fs-5">Calificación Videojuego 0-10</label>
+                                <input type="range" class="form-range" min="0" max="10" step="0.5" id="calificacion">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                      <button type="submit" class="btn btn-primary">Añadir Videojuego</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <div class="lista-producto">
                 <table class="table table-borderless">
                     <thead class="text-center">
@@ -214,7 +335,6 @@
                             <td><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></td>
                             <td><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>

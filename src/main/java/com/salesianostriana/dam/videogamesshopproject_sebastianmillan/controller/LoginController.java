@@ -11,9 +11,4 @@ public class LoginController {
 	public String showLoginForm(Model model) {
 		return "form_inicio_sesion";
 	}
-	
-	@GetMapping("/login/submit")
-	public String processLoginForm(Model model) {
-		return "index";
-	}
 }
