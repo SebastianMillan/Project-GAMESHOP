@@ -74,8 +74,6 @@ public class SecurityConfig {
 			.loginPage("/login")
 			.permitAll();
 		
-		// Añadimos esto para poder seguir accediendo a la consola de H2
-		// con Spring Security habilitado.
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 		

@@ -5,18 +5,25 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="form-videojuego w-50 p-3 mx-auto mt-4">
-            <form name="form-cliente" th:action="addCliente" th:object="${clienteForm}" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <form name="filtro-productos" th:action="${usuario.dni != null} ? @{/editUsuario/submit} : @{/addUsuario/submit}" th:object="${usuario}" method="POST" autocomplete="on" enctype="multipart/form-data">
+                <input th:if="${usuario.dni != null}" type="hidden" name="dni" th:field="*{dni}" />
                 <div class="row">
-                    <div class="col-xl-6">
+                    <div class="col-xl-12">
                         <div class="form-outline">
                             <label for="email-cliente" class="form-label fs-5">Email</label>
                             <input type="email" th:field="*{email}" class="form-control" id="email-cliente">
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-6 my-2">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="dni">DNI</label>
                             <input type="text" th:field="*{dni}" id="dni" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-xl-6 my-2">
+                        <div class="form-outline">
+                            <label class="form-label fs-5" for="username">Nombre de Usuario</label>
+                            <input type="text" th:field="*{username}" id="username" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -37,17 +44,17 @@
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="contra" class="form-label fs-5">Contraseña</label>
-                        <input type="password" id="contra" th:field="*{contrasenya}" class="form-control">
+                        <input type="password" id="contra" th:field="*{password}" class="form-control">
                     </div>
                     <div class="col-xl-6">
                         <label for="repite-contra" class="form-label fs-5">Repite Contraseña</label>
-                        <input type="password" id="repite-contra" th:field="*{contrasenya}" class="form-control">
+                        <input type="password" id="repite-contra" th:field="*{password}" class="form-control">
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="fecha-nac" class="form-label fs-5">Fecha Nacimiento</label>
-                        <input type="date" id="fecha-nac" name="fecha-nac" th:field="*{fechaNacim}" th:value="*{fechaNacim}" />
+                        <input type="date" class="form-control" id="fecha-nac" name="fecha-nac" th:field="*{fechaNacim}" th:value="*{fechaNacim}" />
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
@@ -56,7 +63,15 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" value="Submit" class="btn btn-primary btn-block my-2">Añadir Usuario</button>
+                <div class="row my-2">
+                    <div class="col-xl-6">
+                        <button type="submit" value="Submit" class="btn btn-primary btn-block my-2">Añadir Usuario</button>
+                    </div>
+                    <div class="form-check col-xl-6">
+                        <label class="form-check-label fs-5" for="edic-colec">Es ADMIN</label>
+                        <input class="form-check-input" type="checkbox" name="admin" th:checked="${usuario.admin}" id="edic-colec">
+                    </div>
+                </div>
             </form>
         </div>
     </main>
