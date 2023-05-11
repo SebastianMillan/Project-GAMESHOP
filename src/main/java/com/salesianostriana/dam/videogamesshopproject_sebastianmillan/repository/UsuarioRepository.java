@@ -11,10 +11,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	Optional<Usuario> findFirstByUsername(String username);
 	
-	@Query("select u from Usuario u where u.dni = ?1")
-	Usuario findByDNI(String dni);
+	Optional<Usuario> findByDni(String dni);
 	
-	@Query("select u from Usuario u where u.dni = ?1")
-	Usuario deleteByDNI(String dni);
+	Optional<Usuario> deleteByDni(String dni);
 
 }

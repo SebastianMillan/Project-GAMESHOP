@@ -37,7 +37,7 @@ public class UsuarioController {
 	
 	@GetMapping("/editUsuario/{dni}")
 	public String showFormEditUsuario(@PathVariable("dni") String dni, Model model) {
-		Usuario uEditar = usuarioService.findByDNI(dni).get();
+		Usuario uEditar = usuarioService.findByDNI(dni);
 		if(uEditar!=null) {
 			model.addAttribute("usuario", uEditar);
 			return "form_cliente";
@@ -46,14 +46,14 @@ public class UsuarioController {
 		}
 	}
 	
-	@GetMapping("/editUsuario/submit")
+	@PostMapping("/editUsuario/submit")
 	public String processFormEditUsuario(@ModelAttribute("usuario") Usuario u) {
 		usuarioService.save(u);
 		return "redirect:/admin/clientes";
 	}
 	
 	@GetMapping("/deleteUsuario/{id}")
-	public String deleteUsuario(@PathVariable("dni") String dni) {
+	public String deleteUsuario(@PathVariable("dni") String dni, Model model) {
 		usuarioService.deleteByDNI(dni);
 		return "redirect:/admin/clientes";
 		

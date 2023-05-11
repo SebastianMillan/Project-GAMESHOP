@@ -1,7 +1,6 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service;
 
-import java.util.Optional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
@@ -12,13 +11,14 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebas
 public class UsuarioService 
 	extends BaseServiceImp<Usuario, Long, UsuarioRepository>{
 	
+	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	public Optional<Usuario> findByDNI(String dni) {
-		return Optional.of(usuarioRepository.findByDNI(dni));
+	public Usuario findByDNI(String dni) {
+		return usuarioRepository.findByDni(dni).get();
 	}
 	
-	public Optional<Usuario> deleteByDNI(String dni) {
-		return Optional.of(usuarioRepository.deleteByDNI(dni));
+	public void deleteByDNI(String dni) {
+		usuarioRepository.deleteByDni(dni).get();
 	}
 }
