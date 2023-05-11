@@ -1,29 +1,27 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.UsuarioService;
 
 @Controller
-@RequestMapping("/user")
 public class UsuarioController {
-
-	/*
-	@GetMapping("/me")
-	public String me() {
-		Usuario u = (Usuario) SecurityContextHolder
-			.getContext()
-			.getAuthentication()
-			.getPrincipal();
-		return "";
-	}
-	*/
 	
-	@GetMapping("/profile")
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@GetMapping("/user/profile")
 	public String me(@AuthenticationPrincipal Usuario u) {
 		return "perfil";
+	}
+	
+	public String showFormAddUsuario(Model model) {
+		model.addAttribute("usuario", new Usuario());
+		return "form_cliente";
 	}
 }
