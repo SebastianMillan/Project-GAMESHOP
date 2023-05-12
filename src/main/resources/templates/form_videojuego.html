@@ -29,22 +29,19 @@
                     <div class="col-xl-4">
                         <label for="genero" class="form-label fs-5">Género</label>
                         <select class="form-select" name="genero" aria-label="genero">
-                            <option
-                                th:each="genero : ${generos}"
-                                th:value="${genero}" th:text="${genero}">AAA</option>
+                            <option th:each="gen : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero).values()}" 
+                            th:value="${gen}" th:text="${gen}"></option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="pegi" class="form-label fs-5">PEGI</label>
                         <select class="form-select" name="pegi" aria-label="tipo-desarrollo">
-                            <option
-                                th:each="pegi : ${pegis}"
-                                th:value="${pegi}" th:text="${pegi}">AAA</option>
+                            <option th:each="pegi : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI).values()}" 
+                                th:value="${pegi}" th:text="${pegi}"></option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="fecha-lanz" class="form-label fs-5">Fecha Lanzamiento</label>
-                        <input type="date" class="form-control">
                         <input type="date" class="form-control" id="fecha-lanz" name="fecha-lanz" th:field="*{fechaLanzamiento}" th:value="*{fechaLanzamiento}" />
 
                     </div>
@@ -72,7 +69,8 @@
                     <div class="col-xl-6">
                         <label for="tipo-desarrollo" class="form-label fs-5">Tipo Desarrollo</label>
                         <select class="form-select" name="tipo-desarrollo" aria-label="tipo-desarrollo">
-                            <option th:each="tipo : ${tipos}" th:value="${tipo}" th:text="${tipo}">AAA</option>
+                            <option th:each="tipo : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoTipoDesarrollo).values()}" 
+                            th:value="${tipo}" th:text="${tipo}"></option>                       
                         </select>
                     </div>
                     <div class="col-xl-6">
