@@ -69,9 +69,13 @@ public class SecurityConfig {
 			.antMatchers("/css/**","/js/**","/h2-console/**","/fragmentos/**","/img/**").permitAll()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().authenticated()
-			.and()
-		.formLogin()
+		.and()
+			.formLogin()
 			.loginPage("/login")
+			.permitAll()
+		.and()
+			.logout()
+			.logoutUrl("/logout")
 			.permitAll();
 		
 		http.csrf().disable();
