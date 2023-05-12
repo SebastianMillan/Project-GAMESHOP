@@ -21,4 +21,8 @@ public class UsuarioService
 	public void deleteByDNI(String dni) {
 		usuarioRepository.deleteByDni(dni).get();
 	}
+	
+	public int countNumVentasByUser(Usuario usuario) {
+		return usuarioRepository.countNumVentasByUser(usuario);
+	}
 }

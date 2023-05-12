@@ -35,9 +35,9 @@ public class UsuarioController {
 		return "redirect:/admin/clientes";
 	}
 	
-	@GetMapping("/editUsuario/{dni}")
-	public String showFormEditUsuario(@PathVariable("dni") String dni, Model model) {
-		Usuario uEditar = usuarioService.findByDNI(dni);
+	@GetMapping("/editUsuario/{id}")
+	public String showFormEditUsuario(@PathVariable("id") long id, Model model) {
+		Usuario uEditar = usuarioService.findById(id).get();
 		if(uEditar!=null) {
 			model.addAttribute("usuario", uEditar);
 			return "form_cliente";
@@ -53,9 +53,20 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/deleteUsuario/{id}")
-	public String deleteUsuario(@PathVariable("dni") String dni, Model model) {
-		usuarioService.deleteByDNI(dni);
-		return "redirect:/admin/clientes";
+	public String deleteUsuario(@PathVariable("id") long id, Model model) {
+		Usuario userEncont = usuarioService.findById(id).get();
 		
+		if(usuarioService.countNumVentasByUser(userEncont) == 0) {
+			usuarioService.delete(userEncont);
+		}else {
+			return "redirect:/admin/clientes/?error=true";
+		}
+		return "redirect:/admin/clientes";
+	}
+	
+	@GetMapping("/admin/clientes/?error=true")
+	public String errorDeleteUsuario(Model model) {
+		return "/admin/error_delete_user";
+				
 	}
 }
