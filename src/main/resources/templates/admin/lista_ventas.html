@@ -21,7 +21,6 @@
                         <th>Nombre</th>
                         <th>Importe total</th>
                         <th>Fecha</th>
-                        <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
                     <tbody class="align-middle text-center">
@@ -30,8 +29,7 @@
                             <td th:text="${venta.usuario.nombre +' '+venta.usuario.apellidos}">Nintendo</td>
                             <td th:text="${#numbers.formatDecimal(venta.importeTotal, 1, 2) + '€'}">2020-11-10</td>
                             <td th:text="${#temporals.format(venta.fecha)}">2020-11-10</td>
-                            <td><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></td>
-                            <td><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></td>
+                            <td><a th:href="@{/deleteVenta/{id}(id=${venta.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -64,9 +64,4 @@ public class UsuarioController {
 		return "redirect:/admin/clientes";
 	}
 	
-	@GetMapping("/admin/clientes/?error=true")
-	public String errorDeleteUsuario(Model model) {
-		return "/admin/error_delete_user";
-				
-	}
 }

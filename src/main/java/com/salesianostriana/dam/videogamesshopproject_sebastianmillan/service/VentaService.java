@@ -12,7 +12,6 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebas
 @Service
 public class VentaService 
 	extends BaseServiceImp<Venta, Long, VentaRepository>{
-
 	
 	public double cargarPrecio(Venta venta) {
 		double importeTotal;

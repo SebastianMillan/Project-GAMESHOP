@@ -14,6 +14,9 @@
         </aside>
         <main class="col-xl-10">
             <a th:href="@{/addUsuario}"><button type="button"class="btn btn-light d-flex ms-auto m-2">Añadir Usuario</button></a>
+            <div class="alert alert-warning alert-dismissible rounded bg-danger" role="alert" th:if="${param.error}">
+				<span class="text-white">¡No se puede eliminar un usuario si tienen ventas asociadas!</span>
+            </div>
             <div class="lista-producto">
                 <table class="table table-borderless">
                     <thead class="text-center">

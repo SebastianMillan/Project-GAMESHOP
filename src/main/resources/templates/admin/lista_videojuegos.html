@@ -14,6 +14,9 @@
         </aside>
         <main class="col-xl-10">
             <a th:href="@{/addVideojuego}"><button type="button" class="btn btn-light d-flex ms-auto m-2">Añadir Videojuego</button></a>
+            <div class="alert alert-warning alert-dismissible rounded bg-danger" role="alert" th:if="${param.error}">
+				<span class="text-white">¡No se puede eliminar un videojuego si se encuentra en una linea de venta!</span>
+            </div>
             <div class="lista-producto">
                 <table class="table table-borderless">
                     <thead class="text-center">

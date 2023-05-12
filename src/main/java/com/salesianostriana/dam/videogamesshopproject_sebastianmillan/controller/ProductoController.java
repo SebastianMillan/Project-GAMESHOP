@@ -52,7 +52,15 @@ public class ProductoController {
 	
 	@GetMapping("/deleteVideojuego/{id}")
 	public String deleteVideojuego(@PathVariable("id") long id) {
-		productoService.deleteById(id);
+		Producto prodEncont = productoService.findById(id).get();
+		
+		if(productoService.countNumProductoByLineaVenta(prodEncont) == 0) {
+			productoService.delete(prodEncont);
+		}else {
+			return "redirect:/admin/?error=true";
+		}
+		
+		
 		return "redirect:/admin/";
 	}
 

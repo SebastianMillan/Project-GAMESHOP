@@ -3,6 +3,7 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
@@ -16,6 +17,8 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebas
 public class ProductoService 
 	extends BaseServiceImp<Producto, Long, ProductoRepository>{
 
+	@Autowired
+	private ProductoRepository productoRepository;
 
 	public List<String> obtenerValoresPegi() {
 		List<String> listaPegi = new ArrayList<>();
@@ -46,5 +49,7 @@ public class ProductoService
 		
 	}
 
-	
+	public int countNumProductoByLineaVenta(Producto producto) {
+		return productoRepository.countNumProductoByLineaVenta(producto);
+	}
 }

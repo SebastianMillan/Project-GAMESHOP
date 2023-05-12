@@ -9,5 +9,5 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebas
 @Service
 public class LineaVentaService 
 	extends BaseServiceImp<LineaVenta, Long, LineaVentaRepository>{
-
+	
 }
