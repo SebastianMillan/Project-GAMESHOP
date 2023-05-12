@@ -7,11 +7,17 @@
 <h4 align="center">Tienda de venta de Videojuegos</h4>
 <p align="center">
     CLIENTE:
+    <br>
         - Username: user
+    <br>
         - Password: 1234
+    <br>
     ADMINISTRADOR:
+    <br>
         - Username: admin
+    <br>
         - Password: admin
+    <br>
 </p>
 
 ## Funcionamiento (entrega parcial) 12-05-2023
