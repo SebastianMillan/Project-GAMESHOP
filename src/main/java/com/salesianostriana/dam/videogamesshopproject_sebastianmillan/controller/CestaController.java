@@ -6,8 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.CestaService;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.LineaVentaService;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.ProductoService;
 
 @Controller
 public class CestaController {
@@ -18,6 +21,9 @@ public class CestaController {
 	@Autowired
 	private LineaVentaService lineaVentaService;
 	
+	@Autowired
+	private ProductoService productoService;
+	
 	@GetMapping("/venta")
 	public String showCarrito(Model model) {
 		if(model.addAttribute("venta", cestaService.getLineasVentaInCart()) == null) {
@@ -26,11 +32,18 @@ public class CestaController {
 		return "venta";
 	}
 	
-	/*
-	@GetMapping("/lineaVentaAddVenta/{id}")
-	public String lineaVentaAddVenta(@PathVariable("id") Long id, Model model) {
-		cestaService.addLineaVenta(lineaVentaService.);
+	@GetMapping("/crearLineaVenta/{id}")
+	public String createLineaVenta(@PathVariable("id") Long id, Model model) {
+
+        Producto p = productoService.findById(id).get();
+        
+		LineaVenta lv = new LineaVenta();
+		lv.setCantidad(1);
+		lv.setProducto(p);
+		lv.setPrecioUnitario(p.getPrecioBase());
+		lv.setImporte(p.getPrecioBase());
+		
+		cestaService.addLineaVenta(lv);
 		return "redirect:/venta";
 	}
-	*/
 }
