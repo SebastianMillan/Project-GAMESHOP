@@ -52,4 +52,12 @@ public class ProductoService
 	public int countNumProductoByLineaVenta(Producto producto) {
 		return productoRepository.countNumProductoByLineaVenta(producto);
 	}
+	
+	public List<Producto> findByNombre(String nombre) {
+		return productoRepository.findByNombreContainingIgnoreCase(nombre);
+	}
+	
+	public List<Producto> findByEmpresa(String empresa){
+		return productoRepository.findByEmpresaContainingIgnoreCase(empresa);
+	}
 }
