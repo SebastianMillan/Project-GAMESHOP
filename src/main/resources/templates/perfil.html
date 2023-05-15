@@ -4,7 +4,86 @@
 <body>
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
-
+        <div class="row m-0">
+            <aside class="col-xl-2 bg-white">
+                <ul class="list-unstyled">
+                    <li><a th:href="@{/user/profile/}">Mi perfil</a></li>
+                    <li><a th:href="@{/user/ventas}">Mis compras</a></li>
+                    <li>
+                        <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
+                        <a th:href="@{/logout}" class="text-white"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
+                    </li>
+                </ul>
+            </aside>
+            <main class="col-xl-10">
+                <form name="filtro-productos" th:action="${usuario.id != 0} ? @{/editUsuario/submit} : @{/addUsuario/submit}"
+                    th:object="${usuario}" method="POST" autocomplete="on" enctype="multipart/form-data">
+                    <input th:if="${usuario.id != 0}" type="hidden" name="id" th:field="*{id}" />
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="form-outline">
+                                <label for="email-cliente" class="form-label fs-5">Email</label>
+                                <input type="email" th:field="*{email}" class="form-control" id="email-cliente">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 my-2">
+                            <div class="form-outline">
+                                <label class="form-label fs-5" for="dni">DNI</label>
+                                <input type="text" th:field="*{dni}" id="dni" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xl-6 my-2">
+                            <div class="form-outline">
+                                <label class="form-label fs-5" for="username">Nombre de Usuario</label>
+                                <input type="text" th:field="*{username}" id="username" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-xl-4">
+                            <div class="form-outline">
+                                <label class="form-label fs-5" for="nombre">Nombre</label>
+                                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="form-outline">
+                                <label class="form-label fs-5" for="apellidos">Apellidos</label>
+                                <input type="text" id="apellidos" th:field="*{apellidos}" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-xl-6">
+                            <label for="contra" class="form-label fs-5">Contraseña</label>
+                            <input type="password" id="contra" th:field="*{password}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-xl-6">
+                            <label for="fecha-nac" class="form-label fs-5">Fecha Nacimiento</label>
+                            <input type="date" class="form-control" id="fecha-nac" name="fecha-nac" th:field="*{fechaNacim}"
+                                th:value="*{fechaNacim}" />
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="form-outline">
+                                <label class="form-label fs-5" for="telefono">Teléfono</label>
+                                <input type="text" id="telefono" th:field="*{telefono}" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-xl-6">
+                            <button type="submit" value="Submit" class="btn btn-primary btn-block my-2">Añadir Usuario</button>
+                        </div>
+                        <div class="form-check col-xl-6">
+                            <label class="form-check-label fs-5" for="edic-colec">Es ADMIN</label>
+                            <input class="form-check-input" type="checkbox" name="admin" th:checked="${usuario.admin}" id="edic-colec">
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
     </main>
     <footer th:replace="~{fragmentos/footer_fijo::footer_fijo}"></footer>
 </body>

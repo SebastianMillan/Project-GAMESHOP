@@ -19,8 +19,15 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@GetMapping("/user/profile")
-	public String me(@AuthenticationPrincipal Usuario u) {
+	public String me(@AuthenticationPrincipal Usuario u, Model model) {
+		model.addAttribute("me", u);
 		return "perfil";
+	}
+	
+	@GetMapping("/user/ventas")
+	public String showUserVentas(@AuthenticationPrincipal Usuario u){
+		return "a";
+		
 	}
 	
 	@GetMapping("/addUsuario")
