@@ -10,4 +10,7 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebas
 public class LineaVentaService 
 	extends BaseServiceImp<LineaVenta, Long, LineaVentaRepository>{
 	
+	public double calcularImporte(LineaVenta lv) {
+		return lv.getPrecioUnitario()*lv.getCantidad();
+	}
 }

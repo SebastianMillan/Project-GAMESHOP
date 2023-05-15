@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/head::head}"></head>
+<body>
+    <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
+    <main>
+        <div class="w-75 rounded venta">
+            <div class="venta">
+                <table class="table table-borderless">
+                    <thead class="text-center">
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Importe</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody class="align-middle text-center">
+                        <tr th:each="lineaVenta : ${venta}">
+                            <td th:text="${producto.nombre}">Playstation 5</td>
+                            <td th:text=${producto.empresa}>Nintendo</td>
+                            <td th:text="${#temporals.format(producto.fechaLanzamiento)}">2020-11-10</td>
+                            <td th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">499.99€</td>
+                            <td><a th:href="@{/deleteVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer::footer}"></footer>
+</body>
+
+</html>

@@ -14,6 +14,6 @@ a{
     text-decoration: none !important;
     color: black;
 }
-.lista-producto, .detalle-videojuego, .form-videojuego{
+.lista-producto, .detalle-videojuego, .form-videojuego, .venta{
     background-color: rgba(255, 255, 255, 0.682);
 }

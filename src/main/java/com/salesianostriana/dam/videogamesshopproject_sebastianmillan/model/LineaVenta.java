@@ -14,7 +14,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
@@ -35,6 +34,14 @@ public class LineaVenta {
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_lineaventa_venta"))
 	private Venta venta;
 	
+	public LineaVenta(Long id, int cantidad, double precioUnitario, double importe, Producto producto, Venta venta) {
+		this.id = id;
+		this.cantidad = cantidad;
+		this.precioUnitario = precioUnitario;
+		this.importe = importe;
+		this.producto = producto;
+	}
+	
 	//Métodos helper para las asociaciones con lineas de venta
 	
 	public void addToVenta(Venta venta) {
@@ -45,5 +52,6 @@ public class LineaVenta {
 		this.venta=null;
 		venta.getLineasVenta().remove(this);
 	}
+	
 
 }
