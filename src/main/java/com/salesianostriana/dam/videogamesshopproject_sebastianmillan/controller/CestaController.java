@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
@@ -32,8 +33,8 @@ public class CestaController {
 		return "venta";
 	}
 	
-	@GetMapping("/crearLineaVenta/{id}")
-	public String createLineaVenta(@PathVariable("id") Long id, Model model) {
+	@GetMapping("/addLineaVenta/{id}")
+	public String addLineaVenta(@PathVariable("id") Long id, Model model) {
 
         Producto p = productoService.findById(id).get();
         
@@ -41,9 +42,29 @@ public class CestaController {
 		lv.setCantidad(1);
 		lv.setProducto(p);
 		lv.setPrecioUnitario(p.getPrecioBase());
-		lv.setImporte(p.getPrecioBase());
+		lv.setImporte(lineaVentaService.calcularImporte(lv));
 		
+		lineaVentaService.save(lv);
 		cestaService.addLineaVenta(lv);
+		
 		return "redirect:/venta";
+	}
+	
+	@GetMapping("/deleteLineaVenta/{id}")
+    public String deleteLineaVenta(@PathVariable("id") Long id) {
+        
+    	cestaService.removeLineaVenta(lineaVentaService.findById(id).get());
+        return "redirect:/venta";
+    }
+	
+	@ModelAttribute("importe_total")
+	public double calcularImporteTotal() {
+		if(cestaService.getLineasVentaInCart()!=null) {
+			return cestaService.getLineasVentaInCart().stream()
+					.mapToDouble(x -> x.getImporte())
+					.sum();
+		}else {
+			return 0.0;
+		}
 	}
 }

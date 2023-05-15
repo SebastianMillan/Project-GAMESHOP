@@ -5,7 +5,7 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="w-75 rounded venta">
-            <div class="venta">
+            <div class="venta mx-auto">
                 <table class="table table-borderless">
                     <thead class="text-center">
                         <th>Nombre</th>
@@ -16,18 +16,23 @@
                     </thead>
                     <tbody class="align-middle text-center">
                         <tr th:each="lineaVenta : ${venta}">
-                            <td th:text="${producto.nombre}">Playstation 5</td>
-                            <td th:text=${producto.empresa}>Nintendo</td>
-                            <td th:text="${#temporals.format(producto.fechaLanzamiento)}">2020-11-10</td>
-                            <td th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">499.99€</td>
-                            <td><a th:href="@{/deleteVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
+                            <td th:text="${lineaVenta.producto.nombre}">Playstation 5</td>
+                            <td>
+                                <input class="form-control" id="cantidad" th:value="${lineaVenta.cantidad}" type="text" />
+                            </td>
+                            <td th:text="${#numbers.formatDecimal(lineaVenta.precioUnitario, 1, 2) + '€'}"></td>
+                            <td th:text="${#numbers.formatDecimal(lineaVenta.importe, 1, 2) + '€'}"></td>
+                            <td><a th:href="@{/deleteLineaVenta/{id}(id=${lineaVenta.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <span class="fs-1" th:text="${#numbers.formatDecimal(importe_total, 1, 2) + '€'}"></span>
+                </div>
             </div>
         </div>
     </main>
-    <footer th:replace="~{fragmentos/footer::footer}"></footer>
+    <footer th:replace="~{fragmentos/footer_fijo::footer_fijo}"></footer>
 </body>
 
 </html>
