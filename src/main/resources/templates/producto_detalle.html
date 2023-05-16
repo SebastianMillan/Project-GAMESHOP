@@ -28,7 +28,7 @@
                 <span class="ps-4" th:text="${#temporals.format(producto.fechaLanzamiento)}">2013-09-17</span><br>
             </div>
             <div class="col-xl-12 p-2">
-                <a th:href="@{/addLineaVenta/{id}(id=${producto.id})}"><i class="bi bi-cart-plus-fill fs-3"></i></a>
+                <a th:href="@{/addLineaVenta/{id}(id=${producto.id})}"><i class="bi bi-cart-plus-fill fs-3 text-white"></i></a>
                 <span class="fs-1 fw-bold align-middle" th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">59.99€</span>
 
             </div>

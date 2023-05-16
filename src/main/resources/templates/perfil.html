@@ -7,11 +7,11 @@
         <div class="row m-0">
             <aside class="col-xl-2 bg-white">
                 <ul class="list-unstyled">
-                    <li><a th:href="@{/user/profile/}">Mi perfil</a></li>
-                    <li><a th:href="@{/user/ventas}">Mis compras</a></li>
+                    <li><a th:href="@{/user/profile/}" class="text-dark">Mi perfil</a></li>
+                    <li><a th:href="@{/user/ventas}" class="text-dark">Mis compras</a></li>
                     <li>
                         <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
-                        <a th:href="@{/logout}" class="text-white"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
+                        <a th:href="@{/logout}" class="fs-4 text-dark"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
                     </li>
                 </ul>
             </aside>
