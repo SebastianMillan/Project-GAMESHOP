@@ -19,15 +19,29 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@GetMapping("/user/profile")
-	public String me(@AuthenticationPrincipal Usuario u, Model model) {
-		model.addAttribute("me", u);
+	public String me(@AuthenticationPrincipal Usuario usuario, Model model) {
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("edic", false);
 		return "perfil";
 	}
 	
+	@GetMapping("/user/profile/editProfile")
+	public String editProfile(@AuthenticationPrincipal Usuario usuario, Model model) {
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("edic", true);
+		return "perfil";
+	}
+	
+	@PostMapping("/user/profile/editProfile/submit")
+	public String processEditProfile(@ModelAttribute("usuario") Usuario usuario) {
+		usuarioService.save(usuario);
+		return "redirect:/user/profile";
+	}
+	
 	@GetMapping("/user/ventas")
-	public String showUserVentas(@AuthenticationPrincipal Usuario u){
-		return "a";
-		
+	public String showUserVentas(@AuthenticationPrincipal Usuario u, Model model){
+		model.addAttribute("misCompras", u.getVentas());
+		return "perfil_venta";
 	}
 	
 	@GetMapping("/addUsuario")
