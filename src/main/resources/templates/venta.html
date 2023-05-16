@@ -4,8 +4,8 @@
 <body>
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
-        <div class="w-75 rounded venta">
-            <div class="venta">
+        <div class="w-75 rounded mx-auto">
+            <div class="venta mt-4">
                 <table class="table table-borderless">
                     <thead class="text-center">
                         <th>Nombre</th>
@@ -26,8 +26,16 @@
                         </tr>
                     </tbody>
                 </table>
-                <div>
-                    <span class="fs-1" th:text="${#numbers.formatDecimal(importe_total, 1, 2) + '€'}"></span>
+                <div class="justify-content-end row">
+                    <span class="fs-1 col-xl-6" th:text="${'IMPORTE TOTAL: ' + #numbers.formatDecimal(importe_total, 1, 2) + '€'}"></span>
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-xl-3 justify-content-end d-flex pe-4">
+                        <a th:href="@{/}"><button type="submit" class="btn btn-dark btn-block my-4">Seguir comprando</button></a>
+                    </div>
+                    <div class="col-xl-3 justify-content-end d-flex pe-4">
+                        <a th:href="@{/}"><button type="submit" class="btn btn-success btn-block my-4">Finalizar compra</button></a>
+                    </div>
                 </div>
             </div>
         </div>

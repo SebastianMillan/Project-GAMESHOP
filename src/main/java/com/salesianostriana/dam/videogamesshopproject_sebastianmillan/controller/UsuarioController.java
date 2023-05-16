@@ -26,7 +26,7 @@ public class UsuarioController {
 		return "perfil";
 	}
 	
-	@GetMapping("/user/profile/editProfile/{id}")
+	@GetMapping("/user/profile/editProfile/{id}/")
 	public String editProfile(@PathVariable("id") long id, Model model) {
 		model.addAttribute("usuario", usuarioService.findById(id).get());
 		model.addAttribute("edic", true);
