@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.UsuarioService;
@@ -25,9 +26,9 @@ public class UsuarioController {
 		return "perfil";
 	}
 	
-	@GetMapping("/user/profile/editProfile")
-	public String editProfile(@AuthenticationPrincipal Usuario usuario, Model model) {
-		model.addAttribute("usuario", usuario);
+	@GetMapping("/user/profile/editProfile/{id}")
+	public String editProfile(@PathVariable("id") long id, Model model) {
+		model.addAttribute("usuario", usuarioService.findById(id).get());
 		model.addAttribute("edic", true);
 		return "perfil";
 	}
