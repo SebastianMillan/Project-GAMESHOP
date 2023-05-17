@@ -2,7 +2,7 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,17 +33,22 @@ public class VentaService
 	}
 	
 	public boolean isVentasOpen() {
-		if(ventaRepository.collectByIsOpen()!=null) {
+		if(findByOpen()!=null) {
 			return true;
 		}else {
 			return false;
 		}
 	}
 	
+	public List<Venta> findAllOpen(){
+		return ventaRepository.collectByIsOpen();
+	}
+	
 	public Venta findByOpen() {
 		return ventaRepository.collectByIsOpen().stream()
-				.collect(Collectors.toList())
-				.get(0);
+				.findFirst()
+				.orElse(null);
+		
 	}
 	
 	public void addLineaVenta(Venta venta, LineaVenta lineaVenta) {
@@ -66,7 +71,12 @@ public class VentaService
 	}
 	
 	public List<LineaVenta> getLineasVentaCarrito(Venta venta){
-		return Collections.unmodifiableList(venta.getLineasVenta());
+		if(venta!=null) {
+			return Collections.unmodifiableList(venta.getLineasVenta());
+		}else {
+			return null;
+		}
+		
 	}
 	
 	@ModelAttribute("importe_total")
@@ -78,6 +88,11 @@ public class VentaService
 		}else {
 			return 0.0;
 		}
-		)
+	}
+	
+	public Optional<LineaVenta> findByIDLineaVenta(long lineaVenta_id){
+		return findByOpen().getLineasVenta().stream()
+					.filter(x -> x.getLineaVentaPK().getLineaVenta_id()==lineaVenta_id)
+					.findAny();
 	}
 }
