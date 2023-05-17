@@ -1,8 +1,12 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Venta;
@@ -12,6 +16,9 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebas
 @Service
 public class VentaService 
 	extends BaseServiceImp<Venta, Long, VentaRepository>{
+	
+	@Autowired
+	private VentaRepository ventaRepository;
 	
 	public double cargarPrecio(Venta venta) {
 		double importeTotal;
@@ -23,5 +30,54 @@ public class VentaService
 				.sum();
 		
 		return importeTotal;
+	}
+	
+	public boolean isVentasOpen() {
+		if(ventaRepository.collectByIsOpen()!=null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public Venta findByOpen() {
+		return ventaRepository.collectByIsOpen().stream()
+				.collect(Collectors.toList())
+				.get(0);
+	}
+	
+	public void addLineaVenta(Venta venta, LineaVenta lineaVenta) {
+		if(venta.getLineasVenta().contains(lineaVenta)) {
+			lineaVenta.setCantidad(lineaVenta.getCantidad()+1);
+			venta.addLineaVenta(lineaVenta);
+		}else {
+			venta.addLineaVenta(lineaVenta);
+		}
+	}
+	
+	public void removeLineaVenta(Venta venta, LineaVenta lineaVenta) {
+		if(venta.getLineasVenta().contains(lineaVenta)) {
+			if(lineaVenta.getCantidad()>1) {
+				lineaVenta.setCantidad(lineaVenta.getCantidad()-1);
+			}else if (lineaVenta.getCantidad()==1){
+				venta.removeLineaVenta(lineaVenta);
+			}
+		}
+	}
+	
+	public List<LineaVenta> getLineasVentaCarrito(Venta venta){
+		return Collections.unmodifiableList(venta.getLineasVenta());
+	}
+	
+	@ModelAttribute("importe_total")
+	public double calcularImporteTotal(Venta venta) {
+		if(getLineasVentaCarrito(venta)!=null) {
+			return getLineasVentaCarrito(venta).stream()
+					.mapToDouble(x -> x.getImporte())
+					.sum();
+		}else {
+			return 0.0;
+		}
+		)
 	}
 }

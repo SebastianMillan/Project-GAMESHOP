@@ -3,6 +3,7 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -28,11 +29,33 @@ public class CestaService {
 	}
 
 	public void addLineaVenta (LineaVenta lv) {
-		if (venta.contains(lv)) {
+		if (compareLineaVenta(lv)) {
+			//findByProductVenta(lv.getProducto()).setCantidad(findByProductVenta(lv.getProducto()).getCantidad()+1);
 			venta.get(venta.indexOf(lv)).setCantidad(lv.getCantidad()+1);
 		}else {
 			venta.add(lv);
 		}
+	}
+	
+	public boolean compareLineaVenta(LineaVenta lv) {
+		if(findByProductVenta(lv.getProducto())) {
+			if(lv.getProducto().getId()==venta.get(venta.indexOf(lv)).getProducto().getId()) {
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean findByProductVenta(Producto p) {
+		return venta.stream()
+				.anyMatch(x -> x.getProducto().getId()==p.getId());
+	}
+	
+	public LineaVenta findByProductoId(Producto p) {
+		return lineaVentaRepository.findByProductoId(p.getId()).get();
 	}
 	
 	public void removeLineaVenta (LineaVenta lv) {
@@ -43,10 +66,6 @@ public class CestaService {
 				venta.remove(lv);
 			}
 		}
-	}
-	
-	public LineaVenta findByProducto(Producto p) {
-		return lineaVentaRepository.findByProducto(p).orElse(null);
 	}
 	
 	public List<LineaVenta> getLineasVentaInCart(){

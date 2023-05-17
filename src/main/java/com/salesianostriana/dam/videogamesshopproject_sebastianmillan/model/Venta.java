@@ -36,6 +36,7 @@ public class Venta {
 	private Long id;
 	
 	private double importeTotal;
+	private boolean isOpen;
 	
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime fecha;
@@ -48,7 +49,7 @@ public class Venta {
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy = "venta", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "venta", cascade=CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@Builder.Default
 	private List<LineaVenta> lineasVenta = new ArrayList<>();
 	
@@ -60,6 +61,16 @@ public class Venta {
 	public void removeFromUsuario(Usuario usuario) {
 		this.usuario=null;
 		usuario.getVentas().remove(this);
+	}
+	
+	//Métodos helper para las asociaciones con linea de venta
+	public void addLineaVenta(LineaVenta lineaVenta) {
+		lineaVenta.setVenta(this);
+		this.getLineasVenta().add(lineaVenta);
+	}
+	public void removeLineaVenta(LineaVenta lineaVenta) {
+		lineaVenta.setVenta(null);
+		this.getLineasVenta().remove(lineaVenta);
 	}
 	
 }
