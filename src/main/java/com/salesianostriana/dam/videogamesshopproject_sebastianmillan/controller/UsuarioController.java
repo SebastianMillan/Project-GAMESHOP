@@ -1,14 +1,16 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.UsuarioService;
@@ -26,16 +28,26 @@ public class UsuarioController {
 		return "perfil";
 	}
 	
-	@GetMapping("/user/profile/editProfile/{id}")
-	public String editProfile(@PathVariable("id") long id, Model model) {
-		model.addAttribute("usuario", usuarioService.findById(id).get());
+	@PostMapping("/user/profile/editProfile")
+	public String editProfile(@AuthenticationPrincipal Usuario u, Model model) {
+		model.addAttribute("usuario", u);
 		model.addAttribute("edic", true);
 		return "perfil";
 	}
 	
 	@PostMapping("/user/profile/editProfile/submit")
 	public String processEditProfile(@ModelAttribute("usuario") Usuario usuario) {
-		usuarioService.save(usuario);
+		if(usuario.isAdmin()) {
+			usuario.setPassword("{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa");
+		}else {
+			usuario.setPassword("{bcrypt}$2a$10$bnFKD2JlOON0nuv94.KPqumWUSa9LORejpDtcumz/Vlg/diEjajzi");
+		}
+		Usuario usuarioEdit = usuarioService.save(usuario);
+		Authentication auth = new 
+				UsernamePasswordAuthenticationToken(usuarioEdit, null, usuarioEdit.getAuthorities());
+		
+		SecurityContextHolder.getContext().setAuthentication(auth);
+		
 		return "redirect:/user/profile";
 	}
 	
