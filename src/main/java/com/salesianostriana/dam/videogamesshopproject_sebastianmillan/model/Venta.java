@@ -2,9 +2,12 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -37,6 +40,8 @@ public class Venta {
 	
 	private double importeTotal;
 	
+	private boolean isOpen;
+	
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime fecha;
 	
@@ -48,7 +53,7 @@ public class Venta {
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	@OneToMany(mappedBy = "venta", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "venta", cascade=CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@Builder.Default
 	private List<LineaVenta> lineasVenta = new ArrayList<>();
 	
@@ -60,6 +65,45 @@ public class Venta {
 	public void removeFromUsuario(Usuario usuario) {
 		this.usuario=null;
 		usuario.getVentas().remove(this);
+	}
+	
+	//Métodos helper para las asociaciones con linea de venta
+	public void addLineaVenta(LineaVenta lineaVenta) {
+		/*
+		if(getLineasVenta().contains(lineaVenta)){
+			lineaVenta.setVenta(this);
+			this.getLineasVenta().add(lineaVenta);
+		}else {
+			lineaVenta.getLineaVentaPK().setLineaVenta_id(generateIdLineaVenta());
+			lineaVenta.setVenta(this);
+			this.getLineasVenta().add(lineaVenta);
+		}
+		*/
+		lineaVenta.getLineaVentaPK().setLineaVenta_id(generateIdLineaVenta());
+		lineaVenta.setVenta(this);
+		this.getLineasVenta().add(lineaVenta);
+	}
+	
+	public void removeLineaVenta(LineaVenta lineaVenta) {
+		lineaVenta.setVenta(null);
+		this.getLineasVenta().remove(lineaVenta);
+	}
+	
+	public void removeLineaVenta(long lineaVenta_id) {
+		Optional<LineaVenta> lv = lineasVenta.stream()
+				.filter(x -> x.getLineaVentaPK().getVenta_id()==this.id && x.getLineaVentaPK().getLineaVenta_id()==lineaVenta_id)
+				.findFirst();
+		if(lv.isPresent()) {
+			removeLineaVenta(lv.get());
+		}
+	}
+	public long generateIdLineaVenta() {
+		if(!this.lineasVenta.isEmpty()) {
+			return this.lineasVenta.stream()
+					.count() + 1l;
+		}else {
+			return 1l;
+		}
 	}
 	
 }

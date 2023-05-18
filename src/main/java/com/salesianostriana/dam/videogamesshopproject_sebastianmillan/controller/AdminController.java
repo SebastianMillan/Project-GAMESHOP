@@ -38,7 +38,6 @@ public class AdminController {
 	@GetMapping("/ventas")
 	public String mostrarListaVentas(Model model) {
 		model.addAttribute("ventas", ventaService.findAll());
-		//model.addAttribute("importe", ventaService.cargarPrecio());)
 		return "/admin/lista_ventas";
 	}
 	

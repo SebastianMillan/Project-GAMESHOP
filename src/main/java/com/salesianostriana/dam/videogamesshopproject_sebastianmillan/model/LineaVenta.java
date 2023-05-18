@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,14 +17,15 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 public class LineaVenta {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
+	@EmbeddedId
+	@Builder.Default
+	private LineaVentaPK lineaVentaPK = new LineaVentaPK();
+	
 	private int cantidad;
 	private double precioUnitario, importe;
 	
@@ -31,27 +34,8 @@ public class LineaVenta {
 	private Producto producto;
 	
 	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name="fk_lineaventa_venta"))
+	@MapsId("venta_id")
+	@JoinColumn(name="venta_id")
 	private Venta venta;
-	
-	public LineaVenta(Long id, int cantidad, double precioUnitario, double importe, Producto producto, Venta venta) {
-		this.id = id;
-		this.cantidad = cantidad;
-		this.precioUnitario = precioUnitario;
-		this.importe = importe;
-		this.producto = producto;
-	}
-	
-	//Métodos helper para las asociaciones con lineas de venta
-	
-	public void addToVenta(Venta venta) {
-		this.venta=venta;
-		venta.getLineasVenta().add(this);
-	}
-	public void removeFromVenta(Venta venta) {
-		this.venta=null;
-		venta.getLineasVenta().remove(this);
-	}
-	
 
 }

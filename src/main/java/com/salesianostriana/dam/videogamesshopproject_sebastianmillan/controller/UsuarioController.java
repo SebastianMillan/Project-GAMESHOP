@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,9 +30,15 @@ public class UsuarioController {
 		return "perfil";
 	}
 	
+<<<<<<< HEAD
 	@PostMapping("/user/profile/editProfile")
 	public String editProfile(@AuthenticationPrincipal Usuario u, Model model) {
 		model.addAttribute("usuario", u);
+=======
+	@GetMapping("/user/profile/editProfile/{id}/")
+	public String editProfile(@PathVariable("id") long id, Model model) {
+		model.addAttribute("usuario", usuarioService.findById(id).get());
+>>>>>>> main
 		model.addAttribute("edic", true);
 		return "perfil";
 	}
