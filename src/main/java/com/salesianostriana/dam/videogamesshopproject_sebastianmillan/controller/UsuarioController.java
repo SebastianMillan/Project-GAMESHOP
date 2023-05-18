@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.UsuarioService;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.VentaService;
 
 @Controller
 public class UsuarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private VentaService ventaService;
 	
 	@GetMapping("/user/profile")
 	public String me(@AuthenticationPrincipal Usuario usuario, Model model) {
@@ -30,15 +34,9 @@ public class UsuarioController {
 		return "perfil";
 	}
 	
-<<<<<<< HEAD
 	@PostMapping("/user/profile/editProfile")
 	public String editProfile(@AuthenticationPrincipal Usuario u, Model model) {
 		model.addAttribute("usuario", u);
-=======
-	@GetMapping("/user/profile/editProfile/{id}/")
-	public String editProfile(@PathVariable("id") long id, Model model) {
-		model.addAttribute("usuario", usuarioService.findById(id).get());
->>>>>>> main
 		model.addAttribute("edic", true);
 		return "perfil";
 	}
@@ -61,7 +59,7 @@ public class UsuarioController {
 	
 	@GetMapping("/user/ventas")
 	public String showUserVentas(@AuthenticationPrincipal Usuario u, Model model){
-		model.addAttribute("misCompras", u.getVentas());
+		model.addAttribute("misCompras", ventaService.findByUsuario(u));
 		return "perfil_venta";
 	}
 	

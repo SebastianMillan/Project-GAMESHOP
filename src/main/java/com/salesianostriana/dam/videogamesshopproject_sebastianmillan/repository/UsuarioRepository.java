@@ -17,5 +17,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
 	@Query("select count(v) from Venta v where v.usuario = ?1")
 	int countNumVentasByUser(Usuario usuario);
+	
 
 }

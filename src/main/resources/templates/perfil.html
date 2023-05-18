@@ -16,11 +16,7 @@
                 </ul>
             </aside>
             <main class="col-xl-10">
-<<<<<<< HEAD
                 <form name="perfil-usuario" class="w-50 mx-auto mt-2" th:action="${!edic} ? @{/user/profile/editProfile} : @{/user/profile/editProfile/submit}"
-=======
-                <form name="perfil-usuario" class="w-50 mx-auto mt-2" th:action="${!edic} ? @{/user/profile/editProfile/{id}/(id=${usuario.id})} : @{/user/profile/editProfile/submit}"
->>>>>>> main
                     th:object="${usuario}" method="POST" autocomplete="on" enctype="multipart/form-data">
                     <input th:if="${usuario.id != 0}" type="hidden" name="id" th:field="*{id}" />
                     <div class="row">
