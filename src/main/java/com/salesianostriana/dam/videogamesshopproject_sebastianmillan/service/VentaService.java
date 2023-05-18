@@ -54,7 +54,7 @@ public class VentaService
 	public void addLineaVenta(Venta venta, LineaVenta lineaVenta) {
 		if(venta.getLineasVenta().contains(lineaVenta)) {
 			lineaVenta.setCantidad(lineaVenta.getCantidad()+1);
-			venta.addLineaVenta(lineaVenta);
+			//venta.addLineaVenta(lineaVenta);
 		}else {
 			venta.addLineaVenta(lineaVenta);
 		}
@@ -64,8 +64,11 @@ public class VentaService
 		if(venta.getLineasVenta().contains(lineaVenta)) {
 			if(lineaVenta.getCantidad()>1) {
 				lineaVenta.setCantidad(lineaVenta.getCantidad()-1);
+				lineaVenta.setImporte(lineaVenta.getPrecioUnitario()*lineaVenta.getCantidad());
+				venta.setImporteTotal(calcularImporteTotal(venta));
 			}else if (lineaVenta.getCantidad()==1){
 				venta.removeLineaVenta(lineaVenta);
+				venta.setImporteTotal(calcularImporteTotal(venta));
 			}
 		}
 	}
@@ -79,10 +82,11 @@ public class VentaService
 		
 	}
 	
+	
 	@ModelAttribute("importe_total")
 	public double calcularImporteTotal(Venta venta) {
 		if(getLineasVentaCarrito(venta)!=null) {
-			return getLineasVentaCarrito(venta).stream()
+			return venta.getLineasVenta().stream()
 					.mapToDouble(x -> x.getImporte())
 					.sum();
 		}else {

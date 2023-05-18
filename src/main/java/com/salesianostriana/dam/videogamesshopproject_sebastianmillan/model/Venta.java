@@ -40,7 +40,6 @@ public class Venta {
 	
 	private double importeTotal;
 	
-	@Column(name="is_open")
 	private boolean isOpen;
 	
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -70,10 +69,21 @@ public class Venta {
 	
 	//Métodos helper para las asociaciones con linea de venta
 	public void addLineaVenta(LineaVenta lineaVenta) {
+		/*
+		if(getLineasVenta().contains(lineaVenta)){
+			lineaVenta.setVenta(this);
+			this.getLineasVenta().add(lineaVenta);
+		}else {
+			lineaVenta.getLineaVentaPK().setLineaVenta_id(generateIdLineaVenta());
+			lineaVenta.setVenta(this);
+			this.getLineasVenta().add(lineaVenta);
+		}
+		*/
 		lineaVenta.getLineaVentaPK().setLineaVenta_id(generateIdLineaVenta());
 		lineaVenta.setVenta(this);
 		this.getLineasVenta().add(lineaVenta);
 	}
+	
 	public void removeLineaVenta(LineaVenta lineaVenta) {
 		lineaVenta.setVenta(null);
 		this.getLineasVenta().remove(lineaVenta);
@@ -90,10 +100,7 @@ public class Venta {
 	public long generateIdLineaVenta() {
 		if(!this.lineasVenta.isEmpty()) {
 			return this.lineasVenta.stream()
-					.map(LineaVenta::getLineaVentaPK)
-					.map(LineaVentaPK::getLineaVenta_id)
-					.max(Comparator.naturalOrder())
-					.orElse(0l) + 1l;
+					.count() + 1l;
 		}else {
 			return 1l;
 		}

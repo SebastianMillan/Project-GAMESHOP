@@ -56,6 +56,7 @@ public class VentaController {
         	
         	if(lvEncontrada!=null) {
         		ventaService.addLineaVenta(ventaOpen, lvEncontrada);
+        		lvEncontrada.setImporte(lvEncontrada.getCantidad()*lvEncontrada.getPrecioUnitario());
         		ventaOpen.setImporteTotal(calcularImporteTotal());
         		ventaService.save(ventaOpen);
         	}else {
@@ -72,7 +73,6 @@ public class VentaController {
         }else {
         	Venta v = new Venta();
         	v.setFecha(LocalDateTime.now());
-        	
         	v.setUsuario(usuario);
         	v.setOpen(true);
         	LineaVenta lv = new LineaVenta();
