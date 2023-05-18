@@ -36,11 +36,15 @@ public class VentaController {
 	}
 	@GetMapping("/venta")
 	public String showCarrito(Model model) {
-		model.addAttribute("ventaCompleta", ventaService.findByOpen());
-		if(model.addAttribute("venta", ventaService.findByOpen().getLineasVenta())==null) {
-			return "redirect:/";
+		Venta carrito = ventaService.findByOpen();
+		if(carrito!=null) {
+			model.addAttribute("ventaCompleta", carrito);
+			if(model.addAttribute("venta", carrito.getLineasVenta())==null) {
+				return "redirect:/";
+			}
+			return "venta";
 		}
-		return "venta";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/addLineaVenta/{id}")
@@ -102,10 +106,13 @@ public class VentaController {
     }
 	
 	@GetMapping("/processVenta")
-	public String processVenta() {
-		ventaService.findByOpen().setImporteTotal(calcularImporteTotal());
-		ventaService.findByOpen().setOpen(false);
-		ventaService.save(ventaService.findByOpen());
+	public String processVenta(@AuthenticationPrincipal Usuario u) {
+		Venta ventaOpen= ventaService.findByOpen();
+		ventaOpen.setImporteTotal(calcularImporteTotal());
+		ventaOpen.setOpen(false);
+		ventaOpen.setUsuario(u);
+		ventaService.save(ventaOpen);
+		
         return "redirect:/";
 	}
 	
