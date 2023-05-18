@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVentaPK;
@@ -49,10 +50,7 @@ public class VentaController {
         
         if(ventaService.isVentasOpen()) {
         	Venta ventaOpen = ventaService.findByOpen();
-        	LineaVenta lvEncontrada = ventaOpen.getLineasVenta().stream()
-        	        .filter(x -> x.getProducto().getId()==id)
-        	        .findFirst()
-        	        .orElse(null);
+        	LineaVenta lvEncontrada = ventaService.findByIDProducto(ventaOpen, id).orElse(null);
         	
         	if(lvEncontrada!=null) {
         		ventaService.addLineaVenta(ventaOpen, lvEncontrada);
@@ -73,7 +71,7 @@ public class VentaController {
         }else {
         	Venta v = new Venta();
         	v.setFecha(LocalDateTime.now());
-        	v.setUsuario(usuario);
+        	v.addToUsuario(usuario);
         	v.setOpen(true);
         	LineaVenta lv = new LineaVenta();
         	//El id de la linea de venta no puede ser null
@@ -102,6 +100,14 @@ public class VentaController {
     	}
         return "redirect:/venta";
     }
+	
+	@GetMapping("/processVenta")
+	public String processVenta() {
+		ventaService.findByOpen().setImporteTotal(calcularImporteTotal());
+		ventaService.findByOpen().setOpen(false);
+		ventaService.save(ventaService.findByOpen());
+        return "redirect:/";
+	}
 	
 	@ModelAttribute("importe_total")
 	public double calcularImporteTotal() {

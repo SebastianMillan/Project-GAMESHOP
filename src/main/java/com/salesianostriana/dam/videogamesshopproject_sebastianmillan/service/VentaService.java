@@ -99,4 +99,11 @@ public class VentaService
 					.filter(x -> x.getLineaVentaPK().getLineaVenta_id()==lineaVenta_id)
 					.findAny();
 	}
+	
+	public Optional<LineaVenta> findByIDProducto(Venta venta, long prod_id){
+		return venta.getLineasVenta().stream()
+    	        .filter(x -> x.getProducto().getId()==prod_id)
+    	        .findFirst();
+
+	}
 }
