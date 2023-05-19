@@ -4,26 +4,29 @@
 </head>
 <body>
     <header class="sticky-top" th:fragment="header_busqueda">
+        
         <div id="cabecera" class="bg-dark py-0 row navbar m-0 ">
             <div class="text-center col-xl-3 logo p-1">
-                <a href="/indice">
-                    <img src="../../static/img/icono_web-min.png" th:src="@{../../static/img/icono_web-min.png}" alt="logo" class="logo-img mb-2 ms-1">
-                    <span class="fs-1 ps-2 text-white">GAMESHOP</span>
+                <a th:href="@{/}" class="d-flex">
+                    <img src="../../static/img/icono_web-min.png" th:src="@{/img/icono_web-min.png}" alt="logo" class="logo-img mb-2 ms-1">
+                    <span class="fs-1 ps-2 text-white align-self-center">GAMESHOP</span>
                 </a>
             </div>
-            <div class="col-xl-7">
-                <form class="d-flex input-group w-auto">
-                  <input type="search" class="form-control rounded" placeholder="Buscar" aria-label="Buscar" aria-describedby="search-addon"/>
-                  <span class="input-group-text border-0" id="search-addon">
-                    <i class="bi-search"></i>
-                  </span>
+            <div class="col-xl-6">
+                <form class="d-flex input-group w-auto" action="#" th:action="@{/buscar}" th:object="${formBuscar}" method="POST">
+                    <input type="text" name="nombre" class="form-control" th:field="*{search}"/>
+                    <button class="btn btn-light" type="submit"><i class="bi bi-search fs-3"></i></button>
                 </form>
             </div>
             <div class="col-xl-1 text-center">
-                <a href="#" class="text-white"><i class="bi bi-cart-fill fs-1"></i></a>
+                <a href="#" th:href="@{/venta}" class="text-white"><i class="bi bi-cart-fill fs-1"></i></a>
             </div>
             <div class="col-xl-1 text-center">
-                <a href="/login" class="text-white"><i class="bi bi-person-circle fs-1"></i></a>  
+                <a th:href="${esAdmin} ? '/admin/' : '/user/profile'" class="text-white"><i class="bi bi-person-circle fs-1"></i></a>  
+            </div>
+            <div class="col-xl-1 text-center">
+                <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
+                <a th:href="@{/logout}" class="text-white"><i class="bi bi-box-arrow-in-left fs-1"></i></a>  
             </div>
         </div>
     </header>

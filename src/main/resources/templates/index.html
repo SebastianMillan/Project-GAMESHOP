@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"></html>
 <head th:replace="~{fragmentos/head::head}"></head>
 <body>
     <header th:replace="~{fragmentos/header_busqueda::header_busqueda}"></header>
@@ -63,16 +63,18 @@
             </div>
         </aside>
         <main class="col-xl-10">
-            <div th:each="producto : ${listaProductos}" class="contenedor-productos row p-3">
-                <div class="producto col-xl-4 my-3">
+            <div class="contenedor-productos row p-3">
+                <div class="producto col-xl-4 my-3" th:each="producto : ${listaProductos}" data-aos="fade-up">
                     <div class="row h-100">
                         <div class="col-xl-7 p-0">
-                            <img src="https://media.vandal.net/m/24761/grand-theft-auto-v-2014111710572_1.jpg" alt="caratula" class="w-100 mx-auto d-block">
+                            <img th:src="${producto.imagen}" alt="caratula" class="caratula w-100 mx-auto d-block">
                         </div>
                         <div class="col-xl-5">
-                            <span th:text="${producto.nombre}" class="fs-5 text-break fw-bold">Videojuego</span><br>
-                            <span th:text="${producto.plataforma}">Playstation 4</span>
-                            <span th:text="${#numbers.formatDecimal(producto.precio, 1, 2) + '€'}" class="align-bottom d-block">59,99€</span>
+                            <span th:text="${producto.nombre}" class="fs-5 text-break fw-bold"></span><br>
+                            <span th:text="${producto.empresa}"></span>
+                            <span th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}" class="align-bottom d-block">59,99€</span>
+                            <a href="#" th:href="@{/addLineaVenta/{id}(id=${producto.id})}"><i class="bi bi-cart-plus text-white fs-2 m-4"></i></a><br>
+                            <a href="#" th:href="@{/videojuego/{id}(id=${producto.id})}"><i class="bi bi-search text-white fs-2 m-4"></i></a>
                         </div>
                     </div>
                 </div>
@@ -80,5 +82,9 @@
         </main>
     </div>
     <footer th:replace="~{fragmentos/footer::footer}"></footer>
+    <!--<script src="https://unpkg.com/aos@next/dist/aos.js"></script>-->
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

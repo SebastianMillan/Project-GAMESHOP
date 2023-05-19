@@ -5,11 +5,20 @@ body{
     font-family: 'Comfortaa', cursive;
 }
 #cabecera .logo-img{
-    width: 14%;
+    width: 48px;
+}
+.producto, .caratula{
+    height: 320px;
 }
 a{
     text-decoration: none !important;
+    color: black;
 }
+<<<<<<< HEAD
 .lista-producto, .detalle-videojuego, .form-videojuego, .contenedor-estadistica{
     background-color: rgba(255, 255, 255, 0.682);
+=======
+.lista-producto, .detalle-videojuego, .form-videojuego, .venta{
+    background-color: rgba(255, 255, 255, 0.836);
+>>>>>>> main
 }

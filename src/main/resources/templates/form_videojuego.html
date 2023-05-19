@@ -5,76 +5,57 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <main>
         <div class="form-videojuego w-50 p-3 mx-auto">
-            <form name="filtro-productos" action="" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <form name="filtro-productos" th:action="${producto.id != 0} ? @{/editVideojuego/submit} : @{/addVideojuego/submit}" th:object="${producto}" method="POST" autocomplete="on" enctype="multipart/form-data">
+                <input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="titulo">Título</label>
-                            <input type="text" id="titutlo" class="form-control" />
+                            <input type="text" th:field="*{nombre}" id="titulo" class="form-control" />
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="empresa">Empresa Desarrolladora</label>
-                            <input type="text" id="empresa" class="form-control" />
+                            <input type="text" th:field="*{empresa}" id="empresa" class="form-control" />
                         </div>
                     </div>
                 </div>
                 <div class="form-outline my-2">
                     <label class="form-label fs-5" for="descripcion">Descripción</label>
-                    <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                    <textarea class="form-control" th:field="*{descripcion}" id="descripcion" rows="3"></textarea>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-4">
                         <label for="genero" class="form-label fs-5">Género</label>
-                        <select class="form-select" aria-label="genero">
-                            <option value="arcade">Arcade</option>
-                            <option value="plataformas">Plataformas</option>
-                            <option value="disparos">Disparos</option>
-                            <option value="peleas">Peleas</option>
-                            <option value="aventura">Aventura</option>
-                            <option value="rpg">RPG</option>
-                            <option value="accion">Acción</option>
-                            <option value="puzzle">Puzzle</option>
-                            <option value="musical">Musical</option>
-                            <option value="estrategia">Estrategia</option>
-                            <option value="simulacion">Simulación</option>
-                            <option value="deportes">Deportes</option>
-                            <option value="carreras">Carreras</option>
-
+                        <select class="form-select" name="genero" aria-label="genero">
+                            <option th:each="gen : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero).values()}" 
+                            th:value="${gen}" th:text="${gen}"></option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="pegi" class="form-label fs-5">PEGI</label>
-                        <select class="form-select" aria-label="pegi">
-                            <option value="3">+3</option>
-                            <option value="7">+7</option>
-                            <option value="12">+12</option>
-                            <option value="16">+16</option>
-                            <option value="18">+18</option>
-
+                        <select class="form-select" name="pegi" aria-label="tipo-desarrollo">
+                            <option th:each="pegi : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI).values()}" 
+                                th:value="${pegi}" th:text="${pegi}"></option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="fecha-lanz" class="form-label fs-5">Fecha Lanzamiento</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
+                        <input type="date" class="form-control" id="fecha-lanz" name="fecha-lanz" th:field="*{fechaLanzamiento}" th:value="*{fechaLanzamiento}" />
+
                     </div>
                 </div>
                 <div class="my-2">
-                    <label for="caratula-videojuego" class="form-label fs-5">Carátura Videojuego</label>
-                    <input class="form-control" type="file" id="caratula-videojuego">
+                    <label for="caratula-videojuego" class="form-label fs-5">URL Carátura Videojuego</label>
+                    <input class="form-control" type="text" th:field="*{imagen}" id="caratula-videojuego">
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="precio">Precio</label>
                             <i class="bi bi-currency-euro trailing fs-5"></i>
-                            <input type="number" id="precio" class="form-control form-icon-trailing" />
+                            <input type="number" th:field="*{precioBase}" id="precio" class="form-control form-icon-trailing" />
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -87,10 +68,9 @@
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="tipo-desarrollo" class="form-label fs-5">Tipo Desarrollo</label>
-                        <select class="form-select" aria-label="tipo-desarrollo">
-                            <option value="aaa">AAA</option>
-                            <option value="aa">AA</option>
-                            <option value="indie">Indie</option>
+                        <select class="form-select" name="tipo-desarrollo" aria-label="tipo-desarrollo">
+                            <option th:each="tipo : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoTipoDesarrollo).values()}" 
+                            th:value="${tipo}" th:text="${tipo}"></option>                       
                         </select>
                     </div>
                     <div class="col-xl-6">
@@ -103,10 +83,6 @@
                             <option value="switch">Nintendo Switch</option>                 
                         </select>
                     </div>
-                </div>
-                <div class="my-2">
-                    <label for="calificacion" class="form-label fs-5">Calificación Videojuego 0-10</label>
-                    <input type="range" class="form-range" min="0" max="10" step="0.5" id="calificacion">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block my-4">Añadir Videojuego</button>
             </form>

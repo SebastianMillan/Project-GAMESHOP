@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/head::head}"></head>
+<body>
+    <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
+    <!--<form th:action="@{/logout}" method="POST" id="logoutForm"></form>-->
+    <div class="row m-0">
+        <aside class="col-xl-2 bg-white">
+            <ul class="list-unstyled">
+                <li><a th:href="@{/user/profile/}" class="text-dark">Mi perfil</a></li>
+                <li><a th:href="@{/user/ventas}" class="text-dark">Mis compras</a></li>
+                <li>
+                    <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
+                    <a th:href="@{/logout}" class="fs-4 text-dark"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
+                </li>
+            </ul>
+        </aside>
+        <main class="col-xl-10">
+            <!--<button type="button" th:href="@{/admin/formConsola}" class="btn btn-light d-flex ms-auto m-2">Añadir Producto</button>-->
+            <div class="lista-producto">
+                <table class="table table-borderless">
+                    <thead class="text-center">
+                        <th>DNI</th>
+                        <th>Email</th>
+                        <th>Nombre</th>
+                        <th>Importe total</th>
+                        <th>Fecha</th>
+                    </thead>
+                    <tbody class="align-middle text-center">
+                        <tr th:each="venta : ${misCompras}">
+                            <td th:text="${venta.usuario.dni}">Playstation 5</td>
+                            <td th:text="${venta.usuario.email}">Playstation 5</td>
+                            <td th:text="${venta.usuario.nombre +' '+venta.usuario.apellidos}">Nintendo</td>
+                            <td th:text="${#numbers.formatDecimal(venta.importeTotal, 1, 2) + '€'}">2020-11-10</td>
+                            <td th:text="${#temporals.format(venta.fecha)}">2020-11-10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <footer th:replace="~{fragmentos/footer::footer}"></footer>
+</body>
+</html>
