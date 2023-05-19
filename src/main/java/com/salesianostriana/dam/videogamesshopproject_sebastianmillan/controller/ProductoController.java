@@ -23,7 +23,6 @@ public class ProductoController {
 		model.addAttribute("pegis", productoService.obtenerValoresPegi());
 		model.addAttribute("generos", productoService.obtenerValoresGenero());
 		model.addAttribute("tipos", productoService.obtenerValoresTipoDesarrollo());
-
 		return "form_videojuego";	
 	}
 	
@@ -53,14 +52,11 @@ public class ProductoController {
 	@GetMapping("/deleteVideojuego/{id}")
 	public String deleteVideojuego(@PathVariable("id") long id) {
 		Producto prodEncont = productoService.findById(id).get();
-		
 		if(productoService.countNumProductoByLineaVenta(prodEncont) == 0) {
 			productoService.delete(prodEncont);
 		}else {
 			return "redirect:/admin/?error=true";
 		}
-		
-		
 		return "redirect:/admin/";
 	}
 

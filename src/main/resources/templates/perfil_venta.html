@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragmentos/head::head}"></head>
 <body>
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <!--<form th:action="@{/logout}" method="POST" id="logoutForm"></form>-->
     <div class="row m-0">
-        <aside class="col-xl-2 bg-white">
+        <aside class="col-xl-2 bg-white h-100 p-3">
             <ul class="list-unstyled">
-                <li><a th:href="@{/user/profile/}" class="text-dark">Mi perfil</a></li>
-                <li><a th:href="@{/user/ventas}" class="text-dark">Mis compras</a></li>
-                <li>
-                    <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
-                    <a th:href="@{/logout}" class="fs-4 text-dark"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
-                </li>
-            </ul>
+					<div th:if="${usuario.admin}">
+						<li><a th:href="@{/admin/}" class="text-dark fw-bold fs-4">Videojuegos</a></li>
+		                <li><a th:href="@{/admin/clientes}" class="text-dark fw-bold fs-4">Clientes</a></li>
+		                <li><a th:href="@{/admin/ventas}" class="text-dark fw-bold fs-4">Ventas</a></li>
+		                <li><a th:href="@{/admin/estadisticas}" class="text-dark fw-bold fs-4">Estadisticas</a></li>
+					</div>
+                    <li><a th:href="@{/user/profile/}" class="text-dark fw-bold fs-4">Mi perfil</a></li>
+                    <li><a th:href="@{/user/ventas}" class="text-dark fw-bold fs-4">Mis compras</a></li>
+                    <li>
+                        <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
+                        <a th:href="@{/logout}" class="fs-4 text-dark"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
+                    </li>
+                </ul>
         </aside>
         <main class="col-xl-10">
             <!--<button type="button" th:href="@{/admin/formConsola}" class="btn btn-light d-flex ms-auto m-2">Añadir Producto</button>-->
@@ -39,6 +45,6 @@
             </div>
         </main>
     </div>
-    <footer th:replace="~{fragmentos/footer::footer}"></footer>
+    <footer th:replace="~{fragmentos/footer_fijo::footer_fijo}"></footer>
 </body>
 </html>

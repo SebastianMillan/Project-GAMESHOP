@@ -60,6 +60,7 @@ public class UsuarioController {
 	@GetMapping("/user/ventas")
 	public String showUserVentas(@AuthenticationPrincipal Usuario u, Model model){
 		model.addAttribute("misCompras", ventaService.findByUsuario(u));
+		model.addAttribute("usuario", u);
 		return "perfil_venta";
 	}
 	

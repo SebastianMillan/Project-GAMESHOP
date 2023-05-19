@@ -6,11 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Venta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoTipoDesarrollo;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.repository.ProductoRepository;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.repository.VentaRepository;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.servicebase.BaseServiceImp;
 
 @Service
@@ -20,6 +23,9 @@ public class ProductoService
 	@Autowired
 	private ProductoRepository productoRepository;
 
+	@Autowired
+	private VentaRepository ventaRepository;
+	
 	public List<String> obtenerValoresPegi() {
 		List<String> listaPegi = new ArrayList<>();
 
@@ -60,4 +66,19 @@ public class ProductoService
 	public List<Producto> findByEmpresa(String empresa){
 		return productoRepository.findByEmpresaContainingIgnoreCase(empresa);
 	}
+	
+	/*
+	public List<Producto> productsSold(){
+		for (Venta v : ventaRepository.findAll()) {
+			List<LineaVenta> lv = new ArrayList<>();
+			
+		}
+	}
+	
+	public Producto findByMostSold() {
+		
+		
+	}
+	*/
+	
 }

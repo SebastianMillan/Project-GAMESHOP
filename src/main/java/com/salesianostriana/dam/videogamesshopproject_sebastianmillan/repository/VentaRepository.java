@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Venta;
 
@@ -17,5 +18,7 @@ public interface VentaRepository extends JpaRepository<Venta, Long>{
 	@Query("select v from Venta v where v.isOpen = true")
 	List<Venta> collectByIsOpen();
 	
-	List<Venta> findByUsuario(Usuario usuario);
+	@Query("select v from Venta v where v.usuario = ?1 and v.isOpen=false")
+	List<Venta> findByUsuarioAndClose(Usuario usuario);
+	
 }

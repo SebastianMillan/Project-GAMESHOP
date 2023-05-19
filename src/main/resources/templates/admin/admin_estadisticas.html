@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/head::head}"></head>
+<body>
+    <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
+    <div class="row m-0">
+        <aside class="col-xl-2 bg-white">
+            <ul class="list-unstyled">
+                <li><a th:href="@{/admin/}" class="text-dark fw-bold fs-4">Videojuegos</a></li>
+                <li><a th:href="@{/admin/clientes}" class="text-dark fw-bold fs-4">Clientes</a></li>
+                <li><a th:href="@{/admin/ventas}" class="text-dark fw-bold fs-4">Ventas</a></li>
+                <li><a th:href="@{/admin/estadisticas}" class="text-dark fw-bold fs-4">Estadisticas</a></li>
+                <li><a th:href="@{/user/profile}" class="text-dark fw-bold fs-4">Mi perfil</a></li>
+                <li><a th:href="@{/user/ventas}" class="text-dark fw-bold fs-4">Mis compras</a></li>
+                <li>
+                    <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
+                    <a th:href="@{/logout}" class="fs-5 text-dark"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
+                </li>
+            </ul>
+        </aside>
+        <main class="col-xl-10">
+            <div class="row p-0 w-100 mt-3">
+                <div class="col-xl-4 p-0">
+                        <div class="justify-content-center estadistica">
+                            <!--
+                            <span class="display-2">VIDEOJUEGO MÁS VENDIDO</span>
+                            <img th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}" alt="caratula videojuego más vendido">
+                            <span th:text="producto.titulo">Titulo</span>
+                            -->
+                        </div>
+                </div>
+                <div class="col-xl-8 p-0">
+                    <div class="row p-0">
+                        <div class="col-xl-12 estadistica">
+                            <span>TOTAL GANANCIAS : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciaTotal, 1, 2) + '€'}"></span></span>
+                        </div>
+                        <div class="col-xl-4 estadistica">
+                            <span>GANANCIAS PLAYSTATION : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciasSwitch, 1, 2) + '€'}"></span></span>
+                        </div>
+                        <div class="col-xl-4 estadistica">
+                            <span>GANANCIAS NINTENDO : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciasPS4, 1, 2) + '€'}"></span></span>
+                        </div>
+                        <div class="col-xl-4 estadistica">
+                            <span>GANANCIAS XBOX : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciasXBOX, 1, 2) + '€'}"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer th:replace="~{fragmentos/footer_fijo::footer_fijo}"></footer>
+</body>
+</html>

@@ -108,6 +108,23 @@ public class VentaService
 	}
 	
 	public List<Venta> findByUsuario(Usuario usuario){
-		return ventaRepository.findByUsuario(usuario);
+		return ventaRepository.findByUsuarioAndClose(usuario);
+	}
+	
+	public double calcularGananciasTotales() {
+		return ventaRepository.findAll().stream()
+				.mapToDouble(x -> x.getImporteTotal())
+				.sum();
+	}
+	
+	public double calcularGananciaByPlataforma(String plataforma) {
+	
+		
+		return ventaRepository.findAll().stream()
+				.mapToDouble(z -> z.getLineasVenta().stream()
+						.filter(r -> r.getProducto().getPlataforma().equalsIgnoreCase(plataforma))
+						.mapToDouble(d -> d.getImporte())
+						.sum())
+				.sum();
 	}
 }

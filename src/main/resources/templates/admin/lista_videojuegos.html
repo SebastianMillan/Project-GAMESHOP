@@ -5,11 +5,18 @@
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
     <!--<form th:action="@{/logout}" method="POST" id="logoutForm"></form>-->
     <div class="row m-0">
-        <aside class="col-xl-2 bg-white">
-            <ul>
-                <li><a th:href="@{/admin/}">Videojuegos</a></li>
-                <li><a th:href="@{/admin/clientes}">Clientes</a></li>
-                <li><a th:href="@{/admin/ventas}">Ventas</a></li>
+        <aside class="col-xl-2 bg-white h-100 p-3">
+            <ul class="list-unstyled">
+                <li><a th:href="@{/admin/}" class="text-dark fw-bold fs-4">Videojuegos</a></li>
+                <li><a th:href="@{/admin/clientes}" class="text-dark fw-bold fs-4">Clientes</a></li>
+                <li><a th:href="@{/admin/ventas}" class="text-dark fw-bold fs-4">Ventas</a></li>
+                <li><a th:href="@{/admin/estadisticas}" class="text-dark fw-bold fs-4">Estadisticas</a></li>
+                <li><a th:href="@{/user/profile}" class="text-dark fw-bold fs-4">Mi perfil</a></li>
+                <li><a th:href="@{/user/ventas}" class="text-dark fw-bold fs-4">Mis compras</a></li>
+                <li>
+                    <form name="cerrar-sesion" th:action="@{/logout}" method="POST"></form>
+                    <a th:href="@{/logout}" class="fs-5 text-dark"><i class="bi bi-box-arrow-in-left fs-1"></i></a>
+                </li>
             </ul>
         </aside>
         <main class="col-xl-10">
@@ -24,6 +31,7 @@
                         <th>Empresa</th>
                         <th>Fecha Lanzamiento</th>
                         <th>Precio</th>
+                        <th>Detalle</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
@@ -33,6 +41,7 @@
                             <td th:text=${producto.empresa}>Nintendo</td>
                             <td th:text="${#temporals.format(producto.fechaLanzamiento)}">2020-11-10</td>
                             <td th:text="${#numbers.formatDecimal(producto.precioBase, 1, 2) + '€'}">499.99€</td>
+                            <td><a th:href="@{/videojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-search fs-4"></i></button></a></td>
                             <td><a th:href="@{/editVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-pencil-square fs-4"></i></button></a></td>
                             <td><a th:href="@{/deleteVideojuego/{id}(id=${producto.id})}"><button type="button" class="btn p-0"><i class="bi bi-trash fs-4"></i></button></a></td>
                         </tr>

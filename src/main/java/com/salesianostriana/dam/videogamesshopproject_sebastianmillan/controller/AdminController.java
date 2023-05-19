@@ -41,4 +41,16 @@ public class AdminController {
 		return "/admin/lista_ventas";
 	}
 	
+	@GetMapping("/estadisticas")
+	public String mostrarEstadisticas(Model model) {
+		//model.addAttribute("prodMasVendido",);
+		model.addAttribute("gananciaTotal", ventaService.calcularGananciasTotales());
+		
+		model.addAttribute("gananciasSwitch",ventaService.calcularGananciaByPlataforma("Nintendo Switch"));
+		model.addAttribute("gananciasPS4",ventaService.calcularGananciaByPlataforma("Playstation 4"));
+		model.addAttribute("gananciasXBOX",ventaService.calcularGananciaByPlataforma("Xbox one"));
+		
+		return "/admin/admin_estadisticas";
+	}
+	
 }

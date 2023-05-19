@@ -108,12 +108,15 @@ public class VentaController {
 	@GetMapping("/processVenta")
 	public String processVenta(@AuthenticationPrincipal Usuario u) {
 		Venta ventaOpen= ventaService.findByOpen();
-		ventaOpen.setImporteTotal(calcularImporteTotal());
-		ventaOpen.setOpen(false);
-		ventaOpen.setUsuario(u);
-		ventaService.save(ventaOpen);
-		
-        return "redirect:/";
+		if(ventaOpen.getLineasVenta().isEmpty()) {
+			return "redirect:/venta";
+		}else{
+			ventaOpen.setImporteTotal(calcularImporteTotal());
+			ventaOpen.setOpen(false);
+			ventaOpen.setUsuario(u);
+			ventaService.save(ventaOpen);
+	        return "redirect:/";
+		}
 	}
 	
 	@ModelAttribute("importe_total")
