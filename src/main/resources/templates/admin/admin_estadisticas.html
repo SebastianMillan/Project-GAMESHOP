@@ -18,29 +18,29 @@
                 </li>
             </ul>
         </aside>
-        <main class="col-xl-10">
+        <main class="col-xl-10 w-75 mx-auto">
             <div class="row p-0 w-100 mt-3">
-                <div class="col-xl-4 p-0">
-                        <div class="justify-content-center estadistica">
-                            <!--
-                            <span class="display-2">VIDEOJUEGO MÁS VENDIDO</span>
-                            <img th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}" alt="caratula videojuego más vendido">
-                            <span th:text="producto.titulo">Titulo</span>
-                            -->
+                <div class="col-xl-4 p-2">
+                        <div class="justify-content-center estadistica mx-auto p-2">
+                            <span class="fs-3 fw-bold">VIDEOJUEGO MÁS VENDIDO</span>
+                            <img class="w-50 d-block mx-auto" th:src="${#strings.isEmpty(prodMasVendido.imagen)} ? 'http://placehold.it/350x260' : ${prodMasVendido.imagen}" alt="caratula videojuego más vendido">
+                            <span class="fs-2 text-warning"><i class="bi bi-star-fill"></i><span th:text="${prodMasVendido.nombre}" class="fs-3 fw-bold">Titulo</span></span><br>
+                        
+                            <span class="fs-4">Número de copias vendidas: <span th:text="${cantVentasProdMasVendido}" class="fs-1">2000</span></span>
                         </div>
                 </div>
-                <div class="col-xl-8 p-0">
+                <div class="col-xl-8 p-2">
                     <div class="row p-0">
-                        <div class="col-xl-12 estadistica">
+                        <div class="col-xl-12 estadistica p-3">
                             <span>TOTAL GANANCIAS : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciaTotal, 1, 2) + '€'}"></span></span>
                         </div>
-                        <div class="col-xl-4 estadistica">
+                        <div class="col-xl-4 estadistica p-3">
                             <span>GANANCIAS PLAYSTATION : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciasSwitch, 1, 2) + '€'}"></span></span>
                         </div>
-                        <div class="col-xl-4 estadistica">
+                        <div class="col-xl-4 estadistica p-3">
                             <span>GANANCIAS NINTENDO : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciasPS4, 1, 2) + '€'}"></span></span>
                         </div>
-                        <div class="col-xl-4 estadistica">
+                        <div class="col-xl-4 estadistica p-3">
                             <span>GANANCIAS XBOX : <span class="fs-2" th:text="${#numbers.formatDecimal(gananciasXBOX, 1, 2) + '€'}"></span></span>
                         </div>
                     </div>

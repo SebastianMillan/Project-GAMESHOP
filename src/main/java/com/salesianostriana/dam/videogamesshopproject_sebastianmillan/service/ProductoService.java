@@ -67,18 +67,4 @@ public class ProductoService
 		return productoRepository.findByEmpresaContainingIgnoreCase(empresa);
 	}
 	
-	/*
-	public List<Producto> productsSold(){
-		for (Venta v : ventaRepository.findAll()) {
-			List<LineaVenta> lv = new ArrayList<>();
-			
-		}
-	}
-	
-	public Producto findByMostSold() {
-		
-		
-	}
-	*/
-	
 }

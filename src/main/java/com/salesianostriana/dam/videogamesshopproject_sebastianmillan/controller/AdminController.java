@@ -43,13 +43,12 @@ public class AdminController {
 	
 	@GetMapping("/estadisticas")
 	public String mostrarEstadisticas(Model model) {
-		//model.addAttribute("prodMasVendido",);
+		model.addAttribute("prodMasVendido",ventaService.findProdMasVendido());
+		model.addAttribute("cantVentasProdMasVendido", ventaService.ventasProdMasVendido());
 		model.addAttribute("gananciaTotal", ventaService.calcularGananciasTotales());
-		
 		model.addAttribute("gananciasSwitch",ventaService.calcularGananciaByPlataforma("Nintendo Switch"));
 		model.addAttribute("gananciasPS4",ventaService.calcularGananciaByPlataforma("Playstation 4"));
 		model.addAttribute("gananciasXBOX",ventaService.calcularGananciaByPlataforma("Xbox one"));
-		
 		return "/admin/admin_estadisticas";
 	}
 	

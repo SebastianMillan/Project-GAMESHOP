@@ -1,14 +1,18 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Venta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.repository.VentaRepository;
@@ -118,13 +122,33 @@ public class VentaService
 	}
 	
 	public double calcularGananciaByPlataforma(String plataforma) {
-	
-		
 		return ventaRepository.findAll().stream()
 				.mapToDouble(z -> z.getLineasVenta().stream()
 						.filter(r -> r.getProducto().getPlataforma().equalsIgnoreCase(plataforma))
 						.mapToDouble(d -> d.getImporte())
 						.sum())
 				.sum();
+	}
+	
+	public Map<Producto, Long> calcularCantidadVentasProducto(){
+		List<LineaVenta> allLineasVenta = ventaRepository.collectByIsClose().stream()
+				.flatMap(x -> x.getLineasVenta().stream())
+				.collect(Collectors.toList());
+		
+		return allLineasVenta.stream()
+				.collect(Collectors.groupingBy(x -> x.getProducto(), Collectors.summingLong(x -> x.getCantidad())));
+	}
+	
+	public long ventasProdMasVendido() {
+		return calcularCantidadVentasProducto().entrySet().stream()
+				.max(Comparator.comparingLong(x -> x.getValue()))
+				.get().getValue();
+	}
+	
+	public Producto findProdMasVendido() {
+		return calcularCantidadVentasProducto().entrySet().stream()
+				.max(Comparator.comparingLong(x -> x.getValue()))
+				.get().getKey();
+		
 	}
 }

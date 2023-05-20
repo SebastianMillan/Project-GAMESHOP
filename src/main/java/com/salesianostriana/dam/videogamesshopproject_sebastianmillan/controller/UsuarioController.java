@@ -49,11 +49,8 @@ public class UsuarioController {
 			usuario.setPassword("{bcrypt}$2a$10$bnFKD2JlOON0nuv94.KPqumWUSa9LORejpDtcumz/Vlg/diEjajzi");
 		}
 		Usuario usuarioEdit = usuarioService.save(usuario);
-		Authentication auth = new 
-				UsernamePasswordAuthenticationToken(usuarioEdit, null, usuarioEdit.getAuthorities());
-		
+		Authentication auth = new UsernamePasswordAuthenticationToken(usuarioEdit, null, usuarioEdit.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(auth);
-		
 		return "redirect:/user/profile";
 	}
 	

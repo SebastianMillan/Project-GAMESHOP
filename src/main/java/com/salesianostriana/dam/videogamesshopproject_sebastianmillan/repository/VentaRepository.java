@@ -18,6 +18,9 @@ public interface VentaRepository extends JpaRepository<Venta, Long>{
 	@Query("select v from Venta v where v.isOpen = true")
 	List<Venta> collectByIsOpen();
 	
+	@Query("select v from Venta v where v.isOpen = false")
+	List<Venta> collectByIsClose();
+	
 	@Query("select v from Venta v where v.usuario = ?1 and v.isOpen=false")
 	List<Venta> findByUsuarioAndClose(Usuario usuario);
 	
