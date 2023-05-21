@@ -18,7 +18,7 @@
 	                        <tr th:each="lineaVenta : ${venta}">
 	                            <td th:text="${lineaVenta.producto.nombre}">Playstation 5</td>
 	                            <td>
-	                                <input class="form-control" id="cantidad" th:value="${lineaVenta.cantidad}" type="text" />
+	                                <input class="form-control" id="cantidad" th:value="${lineaVenta.cantidad}" type="text" oninput="actualizarPrecio(this)"/>
 	                            </td>
 	                            <td th:text="${#numbers.formatDecimal(lineaVenta.precioUnitario, 1, 2) + '€'}"></td>
 	                            <td th:text="${#numbers.formatDecimal(lineaVenta.importe, 1, 2) + '€'}"></td>

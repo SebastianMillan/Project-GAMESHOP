@@ -17,3 +17,9 @@ a{
 .lista-producto, .detalle-videojuego, .form-videojuego, .venta, .estadistica{
     background-color: rgba(255, 255, 255, 0.836);
 }
+.ocultar {
+    display: none;
+}
+.mostrar {
+    display: block;
+}

@@ -7,23 +7,35 @@
         <div class="form-videojuego w-50 p-3 mx-auto mt-4">
             <form name="filtro-productos" th:action="${usuario.id != 0} ? @{/editUsuario/submit} : @{/addUsuario/submit}" th:object="${usuario}" method="POST" autocomplete="on" enctype="multipart/form-data">
                 <input th:if="${usuario.id != 0}" type="hidden" name="id" th:field="*{id}" />
+                <div id="errorPass" class="alert alert-danger ocultar" role="alert">
+                    Las contraseñas no coinciden
+                </div>
+                <div id="okPass" class="alert alert-success ocultar" role="alert">
+                    Las contraseñas coinciden
+                </div>
+                <div id="errorDNI" class="alert alert-danger ocultar" role="alert">
+                    El DNI es incorrecto
+                </div>
+                <div id="okDNI" class="alert alert-success ocultar" role="alert">
+                    El DNI es correcto
+                </div>
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="form-outline">
                             <label for="email-cliente" class="form-label fs-5">Email</label>
-                            <input type="email" th:field="*{email}" class="form-control" id="email-cliente">
+                            <input type="email" th:field="*{email}" class="form-control" id="email-cliente" required>
                         </div>
                     </div>
                     <div class="col-xl-6 my-2">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="dni">DNI</label>
-                            <input type="text" th:field="*{dni}" id="dni" class="form-control" />
+                            <input type="text" th:field="*{dni}" id="dni" class="form-control" oninput="validarDNI()" required/>
                         </div>
                     </div>
                     <div class="col-xl-6 my-2">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="username">Nombre de Usuario</label>
-                            <input type="text" th:field="*{username}" id="username" class="form-control" />
+                            <input type="text" th:field="*{username}" id="username" class="form-control" required/>
                         </div>
                     </div>
                 </div>
@@ -31,41 +43,41 @@
                     <div class="col-xl-4">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="nombre">Nombre</label>
-                            <input type="text" id="nombre" th:field="*{nombre}" class="form-control" />
+                            <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xl-8">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="apellidos">Apellidos</label>
-                            <input type="text" id="apellidos" th:field="*{apellidos}" class="form-control" />
+                            <input type="text" id="apellidos" th:field="*{apellidos}" class="form-control" required/>
                         </div>
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="contra" class="form-label fs-5">Contraseña</label>
-                        <input type="password" id="contra" th:field="*{password}" class="form-control">
+                        <input type="password" id="contra" th:field="*{password}" class="form-control" oninput="verificarPasswords()" required>
                     </div>
                     <div class="col-xl-6">
                         <label for="repite-contra" class="form-label fs-5">Repite Contraseña</label>
-                        <input type="password" id="repite-contra" th:field="*{password}" class="form-control">
+                        <input type="password" id="repite-contra" th:field="*{password}" class="form-control" oninput="verificarPasswords()" required>
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="fecha-nac" class="form-label fs-5">Fecha Nacimiento</label>
-                        <input type="date" class="form-control" id="fecha-nac" name="fecha-nac" th:field="*{fechaNacim}" th:value="*{fechaNacim}" />
+                        <input type="date" class="form-control" id="fecha-nac" name="fecha-nac" th:field="*{fechaNacim}" th:value="*{fechaNacim}" required/>
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="telefono">Teléfono</label>
-                            <input type="text" id="telefono" th:field="*{telefono}" class="form-control" />
+                            <input type="text" id="telefono" th:field="*{telefono}" class="form-control" required/>
                         </div>
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
-                        <button type="submit" value="Submit" class="btn btn-primary btn-block my-2">Añadir Usuario</button>
+                        <button type="submit" value="Submit" id="login" class="btn btn-primary btn-block my-2">Añadir Usuario</button>
                     </div>
                     <div class="form-check col-xl-6">
                         <label class="form-check-label fs-5" for="edic-colec">Es ADMIN</label>

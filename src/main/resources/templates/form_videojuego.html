@@ -7,17 +7,20 @@
         <div class="form-videojuego w-50 p-3 mx-auto">
             <form name="filtro-productos" th:action="${producto.id != 0} ? @{/editVideojuego/submit} : @{/addVideojuego/submit}" th:object="${producto}" method="POST" autocomplete="on" enctype="multipart/form-data">
                 <input th:if="${producto.id != 0}" type="hidden" name="id" th:field="*{id}" />
+                <div id="errorPrecio" class="alert alert-danger ocultar" role="alert">
+                    El precio de un producto no puede ser negativo
+                </div>
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="titulo">Título</label>
-                            <input type="text" th:field="*{nombre}" id="titulo" class="form-control" />
+                            <input type="text" th:field="*{nombre}" id="titulo" class="form-control" required/>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="empresa">Empresa Desarrolladora</label>
-                            <input type="text" th:field="*{empresa}" id="empresa" class="form-control" />
+                            <input type="text" th:field="*{empresa}" id="empresa" class="form-control" required/>
                         </div>
                     </div>
                 </div>
@@ -42,26 +45,25 @@
                     </div>
                     <div class="col-xl-4">
                         <label for="fecha-lanz" class="form-label fs-5">Fecha Lanzamiento</label>
-                        <input type="date" class="form-control" id="fecha-lanz" name="fecha-lanz" th:field="*{fechaLanzamiento}" th:value="*{fechaLanzamiento}" />
-
+                        <input type="date" class="form-control" id="fecha-lanz" name="fecha-lanz" th:field="*{fechaLanzamiento}" th:value="*{fechaLanzamiento}" required/>
                     </div>
                 </div>
                 <div class="my-2">
                     <label for="caratula-videojuego" class="form-label fs-5">URL Carátura Videojuego</label>
-                    <input class="form-control" type="text" th:field="*{imagen}" id="caratula-videojuego">
+                    <input class="form-control" type="text" th:field="*{imagen}" id="caratula-videojuego" required>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <div class="form-outline">
                             <label class="form-label fs-5" for="precio">Precio</label>
                             <i class="bi bi-currency-euro trailing fs-5"></i>
-                            <input type="number" th:field="*{precioBase}" id="precio" class="form-control form-icon-trailing" />
+                            <input type="number" th:field="*{precioBase}" id="precio" class="form-control form-icon-trailing" oninput="verificarPrecio()" required/>
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-6 p-4">
                         <div class="form-check">
                             <label class="form-check-label fs-5" for="edic-colec">Edición Coleccionista</label>
-                            <input class="form-check-input" type="checkbox" value="" id="edic-colec">
+                            <input class="form-check-input" type="checkbox" value="" id="edic-colec" required>
                         </div>
                     </div>
                 </div>
@@ -84,11 +86,11 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block my-4">Añadir Videojuego</button>
+                <button type="submit" id="login" class="btn btn-primary btn-block my-4">Añadir Videojuego</button>
             </form>
         </div>
     </main>
-    <footer th:replace="~{fragmentos/footer_fijo::footer_fijo}"></footer>
+    <footer th:replace="~{fragmentos/footer::footer}"></footer>
 </body>
 
 </html>

@@ -1,7 +1,6 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
 import java.time.LocalDateTime;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
-import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVentaPK;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Venta;
@@ -104,6 +103,19 @@ public class VentaController {
     	}
         return "redirect:/venta";
     }
+	
+	@PostMapping("/actualizarCantidad/{lineaVenta_id}")
+	public String actualizarCantidadLV(@PathVariable("lineaVenta_id") Long lineaVenta_id, @RequestParam("cantidad") int cantidad) {
+		
+        LineaVenta lvEncontrada = ventaService.findByIDLineaVenta(lineaVenta_id).orElse(null);
+        if(lvEncontrada!=null) {
+        	lvEncontrada.setCantidad(cantidad);
+            ventaService.save(ventaService.findByOpen());
+            return "redirect:/venta";
+        }else {
+        	return "redirect:/venta";
+        }
+	}
 	
 	@GetMapping("/processVenta")
 	public String processVenta(@AuthenticationPrincipal Usuario u) {
