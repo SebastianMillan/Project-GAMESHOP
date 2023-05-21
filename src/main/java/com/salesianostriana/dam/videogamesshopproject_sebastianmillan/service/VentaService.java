@@ -121,15 +121,6 @@ public class VentaService
 				.sum();
 	}
 	
-	public double calcularGananciaByPlataforma(String plataforma) {
-		return ventaRepository.findAll().stream()
-				.mapToDouble(z -> z.getLineasVenta().stream()
-						.filter(r -> r.getProducto().getPlataforma().equalsIgnoreCase(plataforma))
-						.mapToDouble(d -> d.getImporte())
-						.sum())
-				.sum();
-	}
-	
 	public Map<Producto, Long> calcularCantidadVentasProducto(){
 		List<LineaVenta> allLineasVenta = ventaRepository.collectByIsClose().stream()
 				.flatMap(x -> x.getLineasVenta().stream())
@@ -137,6 +128,13 @@ public class VentaService
 		
 		return allLineasVenta.stream()
 				.collect(Collectors.groupingBy(x -> x.getProducto(), Collectors.summingLong(x -> x.getCantidad())));
+	}
+	
+	public double calcularGananciaByPlataforma(String plataforma) {
+		return calcularCantidadVentasProducto().entrySet().stream()
+				.filter(x -> x.getKey().getPlataforma().equalsIgnoreCase(plataforma))
+				.mapToDouble(x -> x.getKey().getPrecioBase()*x.getValue())
+				.sum();
 	}
 	
 	public long ventasProdMasVendido() {
