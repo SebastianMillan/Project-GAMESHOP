@@ -1,19 +1,12 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class SearchBean {
 
 	private String search;
-	
-	public SearchBean() {
-		
-	}
-	
-	public String getSearch() {
-		return search;
-	}
-
-	public void setSearch(String search) {
-		this.search = search;
-	}
 	
 }

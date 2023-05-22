@@ -1,8 +1,7 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
 import java.util.Collections;
-import java.util.List;
-
+import java.util.List;import org.hibernate.MultiTenancyStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans.MultipleSearchBean;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans.SearchBean;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
@@ -32,6 +32,13 @@ public class MainController {
 		model.addAttribute("formBuscar", new SearchBean());
 		return "index";	
 	}
+	
+	@PostMapping("/busquedaMultiple")
+	public String busquedaMultipleProducto(@ModelAttribute("formBusquedaMultiple") MultipleSearchBean multipleSearchBean, Model model) {
+		model.addAttribute("listaProductos", productoService.findByPlataformaGeneroPegi(multipleSearchBean.getPlataforma(), multipleSearchBean.getGenero(), multipleSearchBean.getPegi()));
+		return "index";
+	}
+	
 	
 	@PostMapping("/buscar")
 	public String buscarProducto(@ModelAttribute("formBuscar") SearchBean searchBean, Model model) {
