@@ -116,15 +116,19 @@ public class VentaController {
         return "redirect:/venta";
     }
 	
-	@PostMapping("/actualizarCantidad/venta/{venta_id}/lineaVenta/{lineaVenta_id}/cantidad/{cantidad}")
+	@GetMapping("/actualizarCantidad/venta/{venta_id}/lineaVenta/{lineaVenta_id}/cantidad/{cantidad}")
 	public String actualizarCantidadLV(@PathVariable("venta_id") Long venta_id,
 			@PathVariable("lineaVenta_id") Long lineaVenta_id, @PathVariable("cantidad") int cantidad) {
-		
+		if(cantidad<=0) {
+			cantidad=0;
+		}
 		Optional<Venta> ventaEncontrada = ventaService.findById(venta_id);
 		if(ventaEncontrada.isPresent()) {
 			Optional<LineaVenta> lvEncontrada = ventaService.findLineaVentaByID(ventaEncontrada.get(), lineaVenta_id);
 	        if(lvEncontrada.isPresent()) {
 	        	lvEncontrada.get().setCantidad(cantidad);
+	        	lvEncontrada.get().setImporte(cantidad*lvEncontrada.get().getPrecioUnitario());
+	            ventaEncontrada.get().setImporteTotal(calcularImporteTotal());
 	            ventaService.save(ventaEncontrada.get());
 	            return "redirect:/venta";
 	        }else {

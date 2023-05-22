@@ -16,8 +16,6 @@ import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans.
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans.SearchBean;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
-import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero;
-import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.ProductoService;
 
 @Controller

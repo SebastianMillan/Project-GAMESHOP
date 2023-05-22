@@ -6,6 +6,9 @@
     <main th:object="${ventaCompleta}">
         <div class="w-75 rounded mx-auto">
 	            <div class="venta mt-4">
+					<div id="errorCantidad" class="alert alert-danger ocultar" role="alert">
+						La cantidad no puede ser un número negativo
+					</div>
 	                <table class="table table-borderless">
 	                    <thead class="text-center">
 	                        <th>Nombre</th>
@@ -18,7 +21,7 @@
 	                        <tr th:each="lineaVenta : ${venta}">
 	                            <td th:text="${lineaVenta.producto.nombre}">Playstation 5</td>
 	                            <td>
-	                                <input class="form-control" th:onChange="'javascript:actualizarCantidad('+${lineaVenta.lineaVentaPK.venta_id}+', '+${lineaVenta.lineaVentaPK.lineaVenta_id}+', this.value)'" th:id="${lineaVenta.lineaVentaPK.lineaVenta_id}" th:value="${lineaVenta.cantidad}" type="text"/>
+	                                <input class="form-control" th:onchange="'javascript:actualizarCantidad('+${lineaVenta.lineaVentaPK.venta_id}+', '+${lineaVenta.lineaVentaPK.lineaVenta_id}+', this.value)'" th:id="${lineaVenta.lineaVentaPK.lineaVenta_id}" th:value="${lineaVenta.cantidad}" onchange="verificarCantidad(this.id)" type="text"/>
 	                            </td>
 	                            <td th:text="${#numbers.formatDecimal(lineaVenta.precioUnitario, 1, 2) + '€'}"></td>
 	                            <td th:text="${#numbers.formatDecimal(lineaVenta.importe, 1, 2) + '€'}"></td>
@@ -34,7 +37,7 @@
 	                        <a th:href="@{/}"><button type="submit" class="btn btn-dark btn-block my-4">Seguir comprando</button></a>
 	                    </div>
 	                    <div class="col-xl-3 justify-content-end d-flex pe-4">
-	                        <a th:href="@{/processVenta}"><button type="submit" class="btn btn-success btn-block my-4">Finalizar compra</button></a>
+	                        <a th:href="@{/processVenta}"><button type="submit" id="compra" class="btn btn-success btn-block my-4">Finalizar compra</button></a>
 	                    </div>
 	                </div>
 	            </div>
