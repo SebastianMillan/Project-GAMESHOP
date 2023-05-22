@@ -87,8 +87,6 @@ public class VentaService
 		
 	}
 	
-	
-	@ModelAttribute("importe_total")
 	public double calcularImporteTotal(Venta venta) {
 		if(getLineasVentaCarrito(venta)!=null) {
 			return venta.getLineasVenta().stream()
@@ -122,31 +120,54 @@ public class VentaService
 	}
 	
 	public Map<Producto, Long> calcularCantidadVentasProducto(){
-		List<LineaVenta> allLineasVenta = ventaRepository.collectByIsClose().stream()
-				.flatMap(x -> x.getLineasVenta().stream())
-				.collect(Collectors.toList());
-		
-		return allLineasVenta.stream()
-				.collect(Collectors.groupingBy(x -> x.getProducto(), Collectors.summingLong(x -> x.getCantidad())));
+		if(!ventaRepository.collectByIsClose().isEmpty()) {
+			List<LineaVenta> allLineasVenta = ventaRepository.collectByIsClose().stream()
+					.flatMap(x -> x.getLineasVenta().stream())
+					.collect(Collectors.toList());
+			
+			return allLineasVenta.stream()
+					.collect(Collectors.groupingBy(x -> x.getProducto(), Collectors.summingLong(x -> x.getCantidad())));
+		}else {
+			return null;
+		}
 	}
 	
 	public double calcularGananciaByPlataforma(String plataforma) {
-		return calcularCantidadVentasProducto().entrySet().stream()
-				.filter(x -> x.getKey().getPlataforma().equalsIgnoreCase(plataforma))
-				.mapToDouble(x -> x.getKey().getPrecioBase()*x.getValue())
-				.sum();
+		if(calcularCantidadVentasProducto()!=null) {
+			return calcularCantidadVentasProducto().entrySet().stream()
+					.filter(x -> x.getKey().getPlataforma().equalsIgnoreCase(plataforma))
+					.mapToDouble(x -> x.getKey().getPrecioBase()*x.getValue())
+					.sum();
+		}else {
+			return 0.0;
+		}
+		
 	}
 	
 	public long ventasProdMasVendido() {
-		return calcularCantidadVentasProducto().entrySet().stream()
-				.max(Comparator.comparingLong(x -> x.getValue()))
-				.get().getValue();
+		if(calcularCantidadVentasProducto()!=null) {
+			return calcularCantidadVentasProducto().entrySet().stream()
+					.max(Comparator.comparingLong(x -> x.getValue()))
+					.get().getValue();
+		}else {
+			return 0l;
+		}
+		
 	}
 	
 	public Producto findProdMasVendido() {
-		return calcularCantidadVentasProducto().entrySet().stream()
-				.max(Comparator.comparingLong(x -> x.getValue()))
-				.get().getKey();
-		
+		if(calcularCantidadVentasProducto()!=null) {
+			return calcularCantidadVentasProducto().entrySet().stream()
+					.max(Comparator.comparingLong(x -> x.getValue()))
+					.get().getKey();
+		}else {
+			return null;
+		}
 	}
+	
+	public Optional<LineaVenta> findLineaVentaByID(Venta venta, Long lineaVenta_id){
+		return venta.getLineasVenta().stream()
+				.filter(x -> x.getLineaVentaPK().getLineaVenta_id()==lineaVenta_id)
+				.findFirst();
+		}
 }

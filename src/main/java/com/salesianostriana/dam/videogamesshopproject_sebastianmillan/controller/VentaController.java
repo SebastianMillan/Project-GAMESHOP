@@ -2,6 +2,7 @@ package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controlle
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.LineaVenta;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
@@ -49,7 +49,7 @@ public class VentaController {
 	
 	@GetMapping("/venta/{id}")
 	public String detalleVenta(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") long id, Model model) {
-		if(ventaService.findById(id)!=null) {
+		if(ventaService.findById(id).isPresent()) {
 			List<LineaVenta> LineaVentaEncontrada = ventaService.findById(id).get().getLineasVenta();
 			model.addAttribute("venta", LineaVentaEncontrada);	
 			model.addAttribute("usuario", usuario);
@@ -57,9 +57,7 @@ public class VentaController {
 		}else {
 			return "redirect:/user/ventas";
 		}
-		
 	}
-	
 	
 	@GetMapping("/addLineaVenta/{id}")
 	public String addLineaVenta(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id, Model model) {
@@ -68,11 +66,11 @@ public class VentaController {
         
         if(ventaService.isVentasOpen()) {
         	Venta ventaOpen = ventaService.findByOpen();
-        	LineaVenta lvEncontrada = ventaService.findByIDProducto(ventaOpen, id).orElse(null);
+        	Optional<LineaVenta> lvEncontrada = ventaService.findByIDProducto(ventaOpen, id);
         	
-        	if(lvEncontrada!=null) {
-        		ventaService.addLineaVenta(ventaOpen, lvEncontrada);
-        		lvEncontrada.setImporte(lvEncontrada.getCantidad()*lvEncontrada.getPrecioUnitario());
+        	if(lvEncontrada.isPresent()) {
+        		ventaService.addLineaVenta(ventaOpen, lvEncontrada.get());
+        		lvEncontrada.get().setImporte(lvEncontrada.get().getCantidad()*lvEncontrada.get().getPrecioUnitario());
         		ventaOpen.setImporteTotal(calcularImporteTotal());
         		ventaService.save(ventaOpen);
         	}else {
@@ -103,15 +101,14 @@ public class VentaController {
         	v.setImporteTotal(calcularImporteTotal());
         	ventaService.save(v);
         }
-		
 		return "redirect:/venta";
 	}
 	
 	@GetMapping("/deleteLineaVenta/{lineaVenta_id}")
     public String deleteLineaVenta(@PathVariable("lineaVenta_id") Long lineaVenta_id) {
-        LineaVenta lvEncontrada = ventaService.findByIDLineaVenta(lineaVenta_id).orElse(null);
-    	if(lvEncontrada!=null) {
-    		ventaService.removeLineaVenta(ventaService.findByOpen(), lvEncontrada);
+        Optional<LineaVenta> lvEncontrada = ventaService.findByIDLineaVenta(lineaVenta_id);
+    	if(lvEncontrada.isPresent()) {
+    		ventaService.removeLineaVenta(ventaService.findByOpen(), lvEncontrada.get());
     		ventaService.save(ventaService.findByOpen());
     	}else {
     		return "redirect:/venta";
@@ -119,17 +116,24 @@ public class VentaController {
         return "redirect:/venta";
     }
 	
-	@PostMapping("/actualizarCantidad/{lineaVenta_id}")
-	public String actualizarCantidadLV(@PathVariable("lineaVenta_id") Long lineaVenta_id, @RequestParam("cantidad") int cantidad) {
+	@PostMapping("/actualizarCantidad/venta/{venta_id}/lineaVenta/{lineaVenta_id}/cantidad/{cantidad}")
+	public String actualizarCantidadLV(@PathVariable("venta_id") Long venta_id,
+			@PathVariable("lineaVenta_id") Long lineaVenta_id, @PathVariable("cantidad") int cantidad) {
 		
-        LineaVenta lvEncontrada = ventaService.findByIDLineaVenta(lineaVenta_id).orElse(null);
-        if(lvEncontrada!=null) {
-        	lvEncontrada.setCantidad(cantidad);
-            ventaService.save(ventaService.findByOpen());
-            return "redirect:/venta";
-        }else {
-        	return "redirect:/venta";
-        }
+		Optional<Venta> ventaEncontrada = ventaService.findById(venta_id);
+		if(ventaEncontrada.isPresent()) {
+			Optional<LineaVenta> lvEncontrada = ventaService.findLineaVentaByID(ventaEncontrada.get(), lineaVenta_id);
+	        if(lvEncontrada.isPresent()) {
+	        	lvEncontrada.get().setCantidad(cantidad);
+	            ventaService.save(ventaEncontrada.get());
+	            return "redirect:/venta";
+	        }else {
+	        	return "redirect:/venta";
+	        }
+		}else {
+			return "redirect:/venta";
+		}
+		
 	}
 	
 	@GetMapping("/processVenta")
