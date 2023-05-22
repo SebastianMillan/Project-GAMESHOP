@@ -10,56 +10,30 @@
                 <div class="text-center">
                     <i class="bi bi-funnel fs-4 fw-bold text-uppercase"></i><span class="fs-4">Filtrar</span>
                 </div>
-                <form name="filtro-productos" action="" method="POST" autocomplete="on" enctype="multipart/form-data">
-                    <fieldset>
-                        <legend class="fs-5 ps-2 m-0">Precio</legend>
-                        <div class="form-outline input-group ps-2 pe-2 py-2">
-                            <input type="number" id="precio-min" placeholder="Precio mínimo" class="form-control-sm form-control form-icon-trailing" />
-                            <i class="bi bi-currency-euro input-group-text"></i>
+                <form name="filtro-multiple" action="#" th:action="@{/busquedaMultiple}" th:object="${formBusquedaMultiple}" method="POST">
+                        <div>
+                            <label for="plataforma" class="form-label fs-5">Plataforma</label>
+                            <select class="form-select" aria-label="plataforma" th:field="*{plataforma}">
+                                <option value="Playstation 4">Playstation 4</option>
+                                <option value="Xbox One">XBOX One</option>
+                                <option value="Nintendo Switch">Nintendo Switch</option>                   
+                            </select>
                         </div>
-                        <div class="form-outline input-group ps-2 pe-2">
-                            <input type="number" id="precio-max" placeholder="Precio máximo" class="form-control-sm form-control form-icon-trailing" />
-                            <i class="bi bi-currency-euro input-group-text"></i>
+                        <div>
+                            <label for="genero" class="form-label fs-5">Genero</label>
+                            <select class="form-select" name="genero" aria-label="genero" th:field="*{genero}">
+                                <option th:each="genero : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero).values()}" 
+                                th:value="${genero}" th:text="${genero}" ></option>
+                            </select>
                         </div>
-                    </fieldset> 
-                    <fieldset>
-                        <legend class="fs-5 ps-2 m-0">Tipo</legend>
-                        <div class="form-check ps-5">
-                            <input type="radio" class="form-check-input " id="prod-nuevo" name="optradio" value="Nuevo" checked>
-                            <label class="form-check-label" for="prod-nuevo">Nuevo</label>
+                        <div>
+                            <label for="pegi" class="form-label fs-5">PEGI</label>
+                            <select class="form-select" name="pegi" aria-label="pegi" th:field="*{pegi}">
+                                <option th:each="pegi : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI).values()}" 
+                                    th:value="${pegi}" th:text="${pegi}"></option>
+                            </select>
                         </div>
-                        <div class="form-check ps-5">
-                            <input type="radio" class="form-check-input" id="prod-seminuevo" name="optradio" value="Seminuevo" checked>
-                            <label class="form-check-label" for="prod-seminuevo">Seminuevo</label>
-                        </div>
-                        <div class="form-check ps-5">
-                            <input type="radio" class="form-check-input" id="prod-reserva" name="optradio" value="Reserva" checked>
-                            <label class="form-check-label" for="prod-reserva">Reserva</label>
-                        </div>
-                    </fieldset> 
-                    <fieldset>
-                        <legend class="fs-5 ps-2 m-0">Plataforma</legend>
-                        <div class="form-check ps-5">
-                            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                            <label class="form-check-label">Playstation 5</label>
-                        </div>
-                        <div class="form-check ps-5">
-                            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                            <label class="form-check-label">Playstation 4</label>
-                        </div>
-                        <div class="form-check ps-5">
-                            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                            <label class="form-check-label">XBOX series X/S</label>
-                        </div>
-                        <div class="form-check ps-5">
-                            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                            <label class="form-check-label">XBOX one</label>
-                        </div>
-                        <div class="form-check ps-5">
-                            <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-                            <label class="form-check-label">Nintendo Switch</label>
-                        </div>
-                    </fieldset> 
+                    <a th:href="@{/busquedaMultiple}"><button type="submit" id="login" class="btn btn-primary btn-block my-4">Filtrar</button></a>
                 </form>
             </div>
         </aside>

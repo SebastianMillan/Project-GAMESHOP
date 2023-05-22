@@ -67,4 +67,9 @@ public class ProductoService
 		return productoRepository.findByEmpresaContainingIgnoreCase(empresa);
 	}
 	
+	public List<Producto> findByPlataformaGeneroPegi(String plataforma, VideojuegoGenero genero, VideojuegoPEGI pegi){
+		return productoRepository.findByPlataformaGeneroPegi(plataforma, genero, pegi);
+	}
+
+	
 }

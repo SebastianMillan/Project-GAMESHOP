@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans.MultipleSearchBean;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.formbeans.SearchBean;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Producto;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.Usuario;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero;
+import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI;
 import com.salesianostriana.dam.videogamesshopproject_sebastianmillan.service.ProductoService;
 
 @Controller
@@ -30,11 +33,25 @@ public class MainController {
 		model.addAttribute("listaProductos", allProductos);
 		model.addAttribute("esAdmin", u.isAdmin());
 		model.addAttribute("formBuscar", new SearchBean());
+		model.addAttribute("formBusquedaMultiple", new MultipleSearchBean());
 		return "index";	
 	}
 	
+	@PostMapping("/busquedaMultiple")
+	public String busquedaMultipleProducto(@ModelAttribute("formBusquedaMultiple") MultipleSearchBean multipleSearchBean, Model model) {
+		model.addAttribute("formBuscar", new SearchBean());
+		model.addAttribute("formBusquedaMultiple", new MultipleSearchBean());
+		model.addAttribute("listaProductos", productoService.findByPlataformaGeneroPegi(
+				multipleSearchBean.getPlataforma(),
+				multipleSearchBean.getGenero(),
+				multipleSearchBean.getPegi()));
+		return "index";
+	}
+
 	@PostMapping("/buscar")
 	public String buscarProducto(@ModelAttribute("formBuscar") SearchBean searchBean, Model model) {
+		model.addAttribute("formBuscar", new SearchBean());
+		model.addAttribute("formBusquedaMultiple", new MultipleSearchBean());
 		model.addAttribute("listaProductos", productoService.findByNombre(searchBean.getSearch()));
 		return "index";
 	}

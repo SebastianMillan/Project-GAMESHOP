@@ -15,7 +15,7 @@
             <div class="col-xl-6">
                 <form class="d-flex input-group w-auto" action="#" th:action="@{/buscar}" th:object="${formBuscar}" method="POST">
                     <input type="text" name="nombre" class="form-control" th:field="*{search}"/>
-                    <button class="btn btn-light" type="submit"><i class="bi bi-search fs-3"></i></button>
+                    <a th:href="@{/buscar}"><button class="btn btn-light" type="submit"><i class="bi bi-search fs-3"></i></button></a>
                 </form>
             </div>
             <div class="col-xl-1 text-center">
