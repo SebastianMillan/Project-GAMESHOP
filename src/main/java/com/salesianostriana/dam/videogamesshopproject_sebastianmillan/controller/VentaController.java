@@ -119,7 +119,9 @@ public class VentaController {
 	@GetMapping("/actualizarCantidad/venta/{venta_id}/lineaVenta/{lineaVenta_id}/cantidad/{cantidad}")
 	public String actualizarCantidadLV(@PathVariable("venta_id") Long venta_id,
 			@PathVariable("lineaVenta_id") Long lineaVenta_id, @PathVariable("cantidad") int cantidad) {
-		
+		if(cantidad<=0) {
+			cantidad=0;
+		}
 		Optional<Venta> ventaEncontrada = ventaService.findById(venta_id);
 		if(ventaEncontrada.isPresent()) {
 			Optional<LineaVenta> lvEncontrada = ventaService.findLineaVentaByID(ventaEncontrada.get(), lineaVenta_id);
