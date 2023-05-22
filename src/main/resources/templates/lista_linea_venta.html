@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragmentos/head::head}"></head>
 <body>
     <header th:replace="~{fragmentos/header_basico::header_basico}"></header>
@@ -26,21 +26,17 @@
             <div class="lista-producto">
                 <table class="table table-borderless">
                     <thead class="text-center">
-                        <th>Detalles</th>
-                        <th>DNI</th>
-                        <th>Email</th>
                         <th>Nombre</th>
-                        <th>Importe total</th>
-                        <th>Fecha</th>
+	                    <th>Cantidad</th>
+	                    <th>Precio Unitario</th>
+	                    <th>Importe</th>
                     </thead>
                     <tbody class="align-middle text-center">
-                        <tr th:each="venta : ${misCompras}">
-                            <td><a th:href="@{/venta/{id}(id=${venta.id})}" class="text-dark"><i class="bi bi-search fs-4 text-dark"></i></a></td>
-                            <td th:text="${venta.usuario.dni}"></td>
-                            <td th:text="${venta.usuario.email}"></td>
-                            <td th:text="${venta.usuario.nombre +' '+venta.usuario.apellidos}"></td>
-                            <td th:text="${#numbers.formatDecimal(venta.importeTotal, 1, 2) + '€'}"></td>
-                            <td th:text="${#temporals.format(venta.fecha)}"></td>
+                        <tr th:each="lineaVenta : ${venta}">
+                            <td th:text="${lineaVenta.producto.nombre}">Playstation 5</td>
+                            <td th:text="${lineaVenta.cantidad}"></td>
+                            <td th:text="${#numbers.formatDecimal(lineaVenta.precioUnitario, 1, 2) + '€'}"></td>
+                            <td th:text="${#numbers.formatDecimal(lineaVenta.importe, 1, 2) + '€'}"></td>
                         </tr>
                     </tbody>
                 </table>

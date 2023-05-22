@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -43,8 +44,22 @@ public class VentaController {
 			}
 			return "venta";
 		}
-		return "redirect:/";
+		return "redirect:/"; 
 	}
+	
+	@GetMapping("/venta/{id}")
+	public String detalleVenta(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") long id, Model model) {
+		if(ventaService.findById(id)!=null) {
+			List<LineaVenta> LineaVentaEncontrada = ventaService.findById(id).get().getLineasVenta();
+			model.addAttribute("venta", LineaVentaEncontrada);	
+			model.addAttribute("usuario", usuario);
+			return "lista_linea_venta";
+		}else {
+			return "redirect:/user/ventas";
+		}
+		
+	}
+	
 	
 	@GetMapping("/addLineaVenta/{id}")
 	public String addLineaVenta(@AuthenticationPrincipal Usuario usuario, @PathVariable("id") Long id, Model model) {

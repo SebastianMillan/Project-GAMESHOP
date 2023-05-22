@@ -4,6 +4,7 @@ function verificarPasswords() {
 
     if (pass1.value != pass2.value) {
         document.getElementById("errorPass").classList.add("mostrar");
+        document.getElementById("okPass").classList.add("ocultar");
         document.getElementById("login").disabled = true;
     } else {
         document.getElementById("errorPass").classList.remove("mostrar");
@@ -24,6 +25,7 @@ function validarDNI() {
         document.getElementById("login").disabled = false;
     } else {
         document.getElementById("errorDNI").classList.add("mostrar");
+        document.getElementById("okDNI").classList.add("ocultar");
         document.getElementById("login").disabled = true;
     }
 }
