@@ -1,5 +1,8 @@
 package com.salesianostriana.dam.videogamesshopproject_sebastianmillan.controller;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -22,7 +25,9 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String indice(@AuthenticationPrincipal Usuario u, Model model) {
-		model.addAttribute("listaProductos", productoService.findAll());
+		List<Producto> allProductos = productoService.findAll();
+		Collections.shuffle(allProductos);
+		model.addAttribute("listaProductos", allProductos);
 		model.addAttribute("esAdmin", u.isAdmin());
 		model.addAttribute("formBuscar", new SearchBean());
 		return "index";	
