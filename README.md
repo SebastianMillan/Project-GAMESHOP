@@ -1,5 +1,6 @@
 
 <h1 align="center">
+  <img src="" alt="Logo" width="80" height="80">
   <br>
     GAMESHOP
   <br>
@@ -20,7 +21,7 @@
     <br>
 </p>
 
-## FUNCIONAMIENTO
+## FUNCIONAMIENTO :video_game:
 
 * Nada mas entrar en la web se deberá de logearse con uno de los 'username' y 'password' de alguno de los usuarios creados en la base de datos.
 * Una vez iniciado sesión se accederá al menú principal donde encontramos los diferentes productos que se muestran en columnas junto a algunos atributos. Cada uno tiene un botón para añadirlo al carrito y uno para visualizar sus detalles.
@@ -33,13 +34,18 @@
 * En esas listas se podrá añadir, editar y borrar los diferentes elementos.
 * En la vista de administrador se podrán visualizar algunas estadisticas generales de las compras realizadas en la tienda.
 
-## ACTUALIZACIÓN FUTURA
+## ACTUALIZACIÓN FUTURA :hourglass:
 * Implementación de consolas de videojuegos como productos para su respectiva compra.
 * Implementación de la funcionalidad de comprar por parte de la tienda de videojuegos y consolas de segunda mano aplicandole un descuento a la venta final.
 * Implementación de la funcionalidad de reservar consolas y videojuegos para obtener el producto mediante un email el día del lanzamiento del mismo.
 * Implementación de un sistema de gráficos para una mejor visualización de las estadisticas de la tienda.
 
-## PRUEBAS
-
+## PRUEBAS :radioactive:
+Las tres A’s del Unit Testing
+| Arrange (Organizar) | Act (Actuar)   | Assert (Afirmar) |
+| :---                | :---           |      :---:       |
+| En la cesta de la compra añadir en la cantidad un número negativo | Al introducir un número negativo se añade automaticamente el número 0 | :heavy_check_mark: |
+| En la cesta quitar la cantidad y dejar el campo vacio | Error      | :x: |
+| En un formulario para añadir o editar un producto introducir un precio negativo | Al introducir un número negativo en el precio aparece un mensaje imposibilitando finalizar el formulario | :heavy_check_mark: |
 
 
