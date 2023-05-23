@@ -31,14 +31,14 @@
                 <div class="row my-2">
                     <div class="col-xl-4">
                         <label for="genero" class="form-label fs-5">Género</label>
-                        <select class="form-select" name="genero" aria-label="genero">
+                        <select class="form-select" name="genero" aria-label="genero" th:field="*{genero}">
                             <option th:each="gen : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoGenero).values()}" 
                             th:value="${gen}" th:text="${gen}"></option>
                         </select>
                     </div>
                     <div class="col-xl-4">
                         <label for="pegi" class="form-label fs-5">PEGI</label>
-                        <select class="form-select" name="pegi" aria-label="tipo-desarrollo">
+                        <select class="form-select" name="pegi" aria-label="tipo-desarrollo" th:field="*{pegi}">
                             <option th:each="pegi : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoPEGI).values()}" 
                                 th:value="${pegi}" th:text="${pegi}"></option>
                         </select>
@@ -62,27 +62,27 @@
                     </div>
                     <div class="col-xl-6 p-4">
                         <div class="form-check">
-                            <label class="form-check-label fs-5" for="edic-colec">Edición Coleccionista</label>
-                            <input class="form-check-input" type="checkbox" value="" id="edic-colec" required>
+                            <label class="form-check-label fs-5" for="edic-colec" th:field="*{esEdicColeccionista}">Edición Coleccionista</label>
+                            <input class="form-check-input" type="checkbox" value="" id="edic-colec">
                         </div>
                     </div>
                 </div>
                 <div class="row my-2">
                     <div class="col-xl-6">
                         <label for="tipo-desarrollo" class="form-label fs-5">Tipo Desarrollo</label>
-                        <select class="form-select" name="tipo-desarrollo" aria-label="tipo-desarrollo">
+                        <select class="form-select" name="tipo-desarrollo" aria-label="tipo-desarrollo" th:field="*{tipoDesarrollo}">
                             <option th:each="tipo : ${T(com.salesianostriana.dam.videogamesshopproject_sebastianmillan.model.VideojuegoTipoDesarrollo).values()}" 
                             th:value="${tipo}" th:text="${tipo}"></option>                       
                         </select>
                     </div>
                     <div class="col-xl-6">
                         <label for="plataforma" class="form-label fs-5">Plataforma</label>
-                        <select class="form-select" aria-label="plataforma">
-                            <option value="playstation-5">Playstation 5</option>
-                            <option value="playstation-4">Playstation 4</option>
-                            <option value="xbox-series">XBOX Series</option>
-                            <option value="xbox-one">XBOX One</option>
-                            <option value="switch">Nintendo Switch</option>                 
+                        <select class="form-select" aria-label="plataforma" th:field="*{plataforma}">
+                            <option value="Playstation 5">Playstation 5</option>
+                            <option value="Playstation 4">Playstation 4</option>
+                            <option value="Xbox series">XBOX Series</option>
+                            <option value="Xbox One">XBOX One</option>
+                            <option value="Nintendo Switch">Nintendo Switch</option>                 
                         </select>
                     </div>
                 </div>

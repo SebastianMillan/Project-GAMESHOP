@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-check col-xl-6">
                         <label class="form-check-label fs-5" for="edic-colec">Es ADMIN</label>
-                        <input class="form-check-input" type="checkbox" name="admin" th:checked="${usuario.admin}" id="edic-colec">
+                        <input class="form-check-input" type="checkbox" name="admin" th:checked="${usuario.admin}" th:field="*{admin}" id="edic-colec">
                     </div>
                 </div>
             </form>
