@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <img src="" alt="Logo" width="80" height="80">
+  <img src="https://i.postimg.cc/L8YMgnkK/icono-web-min.png" alt="Logo" width="160" height="200">
   <br>
     GAMESHOP
   <br>
@@ -41,11 +41,16 @@
 * Implementación de un sistema de gráficos para una mejor visualización de las estadisticas de la tienda.
 
 ## PRUEBAS :radioactive:
-Las tres A’s del Unit Testing
+Las tres A’s del Unit Testing - AAA (Arrange-Act-Assert)
 | Arrange (Organizar) | Act (Actuar)   | Assert (Afirmar) |
 | :---                | :---           |      :---:       |
 | En la cesta de la compra añadir en la cantidad un número negativo | Al introducir un número negativo se añade automaticamente el número 0 | :heavy_check_mark: |
-| En la cesta quitar la cantidad y dejar el campo vacio | Error      | :x: |
 | En un formulario para añadir o editar un producto introducir un precio negativo | Al introducir un número negativo en el precio aparece un mensaje imposibilitando finalizar el formulario | :heavy_check_mark: |
+| Cambiar manualmente la ruta del navegador sin pasar el login | Se redirecciona automaticamente al login porque es indispensable para inciar la aplicación web | :heavy_check_mark: |
+| En el formulario de crear o editar usuario introducir un DNI falso o de formato erróneo | Se muestra un mensaje avisando del error y se imposibilita finalizar el formulario | :heavy_check_mark: |
+| Iniciando como usuario sin privilegios intentar acceder a una ruta del administrador | Se muestra error de privilegios | :heavy_check_mark: |
+| En la cesta quitar la cantidad y dejar el campo vacio | Error      | :x: |
+
+
 
 
